@@ -1,0 +1,29 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { PagesRoutingModule } from './pages-routing.module';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { FaqComponent } from './faq/faq.component';
+import { ErrorComponent } from './error/error.component';
+import { BlogComponent } from './blog/blog.component';
+import { PagesComponent } from './pages/pages.component';
+
+
+@NgModule({
+  declarations: [
+    AboutComponent,
+    ContactComponent,
+    PortfolioComponent,
+    FaqComponent,
+    ErrorComponent,
+    BlogComponent,
+    PagesComponent,
+  ],
+  imports: [
+    CommonModule,
+    PagesRoutingModule
+  ]
+})
+export class PagesModule { }
