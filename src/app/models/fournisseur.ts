@@ -19,10 +19,7 @@ export class Fournisseur {
   
 }
 
-import { Product } from "./product";
-import { State } from "./state";
-
-export class Fournisseur {
+export class FournisseurDto {
     id: number;
     reference: string;
     firstName: string;

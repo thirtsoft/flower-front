@@ -1,13 +1,18 @@
 export class Newsletter {
     id: number;
-    imageUrl: string;
-    numero: number;
-    price: number;
-    quantity: number;
-    productId: number;
-    productName: string;
+    code: string;
+    customerEmail: string;
+    subject: string;
+    message: string;
+    dateInscription: Date;
 }
 
 export class NewsletterDto {
+    id: number;
+    code: string;
+    customerEmail: string;
+    subject: string;
+    message: string;
+    dateInscription: Date;
 
 }

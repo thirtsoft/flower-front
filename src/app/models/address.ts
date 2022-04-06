@@ -1,3 +1,4 @@
+import { Commande, CommandeDto } from "./commande";
 import { State, StateDto } from "./state";
 
 export class Address {
@@ -7,6 +8,7 @@ export class Address {
     rue: string;
     zipcode: string;
     
+    commande: Commande;
     state: State ;
 
 }
@@ -18,5 +20,6 @@ export class AddressDto {
     rue: string;
     zipcode: string;
     
+    commandeDto: CommandeDto;
     stateDto: StateDto ;
 }

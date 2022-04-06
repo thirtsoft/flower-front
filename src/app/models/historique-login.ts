@@ -1,4 +1,4 @@
-import { Utilisateur } from "./utilisateur";
+import { Utilisateur, UtilisateurDto } from "./utilisateur";
 
 export class HistoriqueLogin {
     id: number;
@@ -6,7 +6,7 @@ export class HistoriqueLogin {
     status: string;
     createdDate: Date;
 
-    utilisateur: Utilisateur
+    utilisateur: Utilisateur;
 }
 
 export class HistoriqueLoginDto {
@@ -15,6 +15,6 @@ export class HistoriqueLoginDto {
     status: string;
     createdDate: Date;
 
-    utilisateurDto: UtilisateurDto
+    utilisateurDto: UtilisateurDto;
 }
 

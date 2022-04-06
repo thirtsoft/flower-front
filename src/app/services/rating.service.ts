@@ -1,9 +1,67 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { TokenStorageService } from '../auth/services/token-storage.service';
+import { RatingDto } from '../models/rating';
+import { ProductService } from './product.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RatingService {
 
-  constructor() { }
+  apiServerUrl = environment.apiBaseUrl;
+
+  id: any;
+  artId: any;
+
+  constructor(private http: HttpClient,
+              private tokenService: TokenStorageService
+  ) {
+  }
+
+  /***************************** RatingDto */
+
+  public getRatingDtos(): Observable<RatingDto[]> {
+    return this.http.get<RatingDto[]>(`${this.apiServerUrl}/ratings/all`);
+  }
+
+  public getAllRatingDtosOrderByIdDesc(): Observable<RatingDto[]> {
+    return this.http.get<RatingDto[]>(`${this.apiServerUrl}/ratings/searchAllRatingsOrderByIdDesc`);
+  }
+
+  public getTop3RatingOrderByCreatedDateDesc(): Observable<RatingDto[]> {
+    return this.http.get<RatingDto[]>(`${this.apiServerUrl}/ratings/searchTop3RatingOrderByCreatedDateDesc`);
+  }
+
+  public getTop4RatingOrderByCreatedDateDescByProduct(ratId: string): Observable<RatingDto[]> {
+    return this.http.get<RatingDto[]>(`${this.apiServerUrl}/ratings/searchTop4RatingOrderByCreatedDateDescByProductId/${ratId}`);
+  }
+
+  public getRatingDtoById(ratId: number): Observable<RatingDto> {
+    return this.http.get<RatingDto>(`${this.apiServerUrl}/ratings/findById/${ratId}`);
+  }
+
+  public addRatingDto(ratDto: RatingDto): Observable<RatingDto> {
+    return this.http.post<RatingDto>(`${this.apiServerUrl}/ratings/create`, ratDto);
+  }
+
+  public addRatingToArticle(ratDto: RatingDto, reference: string, userId:number): Observable<RatingDto> {
+    return this.http.post<RatingDto>(`${this.apiServerUrl}/ratings/createRatingToArticleWithUser?reference=${reference}&userId=${userId}`, ratDto);
+  }
+
+  public updateRatingDto(ratId: number, ratDto: RatingDto): Observable<RatingDto> {
+    return this.http.put<RatingDto>(`${this.apiServerUrl}/ratings/update/${ratId}`, ratDto);
+  }
+
+  public deleteRatingDto(ratId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiServerUrl}/ratings/delete/${ratId}`);
+  }
+
+  getUserId() {
+    const user = this.tokenService.getUser();
+    this.id = user.id
+  }
+
 }

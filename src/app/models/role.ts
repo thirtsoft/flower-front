@@ -1,16 +1,11 @@
 import { Country, CountryDto } from "./country";
 
-export class State {
+export class Role {
     id: number;
     name: string;
-
-    country: Country;
 }
 
-export class StateDto {
+export class RoleDto {
     id: number;
     name: string;
-
-    countryDto: CountryDto;
-
 }
