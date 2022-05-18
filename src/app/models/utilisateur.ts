@@ -2,18 +2,44 @@ import { RouterLink } from "@angular/router";
 import { Role } from "./role";
 
 export class Utilisateur {
-    id: number;
-    name: string;
-    username: string;
-    mobile: string;
-    email: string;
-    password: string;
-    photo: string;
+    id!: number;
+    name!: string;
+    username!: string;
+    genre?: string;
+    cni?: string;
+    address?: string;
+    mobile!: string;
+    email!: string;
+    password!: string;
+    photo!: string;
+    confirmPassword?: string;
+    active?: boolean;
 
-    role: Role;
+    roles?: Role[];
+
+   
 }
 
-export interface IUser {
+export class UtilisateurDto {
+    id!: number;
+    name!: string;
+    username!: string;
+    genre?: string;
+    cni?: string;
+    address?: string;
+    mobile!: string;
+    email!: string;
+    password!: string;
+    photo!: string;
+    confirmPassword?: string;
+    active?: boolean;
+
+    roles?: Role[];
+
+   
+}
+
+/* export interface IUser {
     id?: any;
     name?: string;
     username?: string;
@@ -27,9 +53,9 @@ export interface IUser {
     password?: string;
     confirmPassword?: string;
     active?: boolean;
-  }
+  } */
 
-export class UtilisateurDto implements IUser  {
+/* export class UtilisateurDto implements IUser  {
     
     constructor(
         public id?: any,
@@ -60,4 +86,4 @@ export class UtilisateurDto implements IUser  {
         this.confirmPassword = confirmPassword ? confirmPassword : null;
         this.active = active ? active : null;
     }
-}
+} */

@@ -3,17 +3,16 @@ import { Commande, CommandeDto } from "./commande";
 import { Product, ProductDto } from "./product";
 
 export class LigneCommande {
-    id: number;
+    id!: number;
     imageUrl: string;
-    numero: number;
+    numero!: number;
     price: number;
     quantity: number;
     productId: number;
     productName: string;
   
-    commande: Commande;
-  
-    article: Product;
+    commande!: Commande;
+    article!: Product;
   
     constructor(cartItem: CartItem){
       this.imageUrl = cartItem.image;
@@ -26,17 +25,16 @@ export class LigneCommande {
 }
 
 export class LigneCommandeDto {
-    id: number;
+    id!: number;
     imageUrl: string;
-    numero: number;
+    numero!: number;
     price: number;
     quantity: number;
     productId: number;
-    productName: string;
+    productName!: string;
   
-    commandeDto: CommandeDto;
-  
-    productDto: ProductDto;
+    commandeDto!: CommandeDto;
+    productDto!: ProductDto;
   
     constructor(cartItem: CartItem){
       this.imageUrl = cartItem.image;

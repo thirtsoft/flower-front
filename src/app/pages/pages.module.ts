@@ -1,5 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination' ;
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { AboutComponent } from './about/about.component';
@@ -23,7 +30,12 @@ import { PagesComponent } from './pages/pages.component';
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+  //  NgbModule
   ]
 })
 export class PagesModule { }

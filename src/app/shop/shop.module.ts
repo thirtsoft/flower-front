@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination' ;
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ShopRoutingModule } from './shop-routing.module';
 import { CartComponent } from './cart/cart.component';
@@ -23,7 +29,12 @@ import { SuccessOrderComponent } from './success-order/success-order.component';
   ],
   imports: [
     CommonModule,
-    ShopRoutingModule
+    ShopRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+ //   NgbModule
   ]
 })
 export class ShopModule { }

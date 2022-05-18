@@ -27,23 +27,23 @@ export class TokenStorageService {
   }
 
   public getToken(): string {
-    return sessionStorage.getItem(TOKEN_KEY);
+    return sessionStorage.getItem(TOKEN_KEY)!;
   }
 
-  public saveUser(user) {
+  public saveUser(user: any) {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
   public getUser() {
-    return JSON.parse(sessionStorage.getItem(USER_KEY));
+    return JSON.parse(sessionStorage.getItem(USER_KEY)!);
   }
 
   public getLogginUser() {
     return sessionStorage.getItem(USER_KEY);
   }
 
-  public saveUserId(id) {
+  public saveUserId(id: any) {
     window.sessionStorage.removeItem(USER_ID);
     window.sessionStorage.setItem(USER_ID, id);
   }
@@ -57,7 +57,7 @@ export class TokenStorageService {
   }
 
   public getUsername(): string {
-    return sessionStorage.getItem(USERNAME_KEY);
+    return sessionStorage.getItem(USERNAME_KEY)!;
   }
 
   public saveName(name: string): void {
@@ -66,7 +66,7 @@ export class TokenStorageService {
   }
 
   public getName(): string {
-    return sessionStorage.getItem(NAME_KEY);
+    return sessionStorage.getItem(NAME_KEY)!;
   }
 
   public saveEmail(email: string): void {
@@ -75,7 +75,7 @@ export class TokenStorageService {
   }
 
   public getEmail(): string {
-    return sessionStorage.getItem(EMAIL_KEY);
+    return sessionStorage.getItem(EMAIL_KEY)!;
   }
 
 
@@ -87,8 +87,8 @@ export class TokenStorageService {
   public getAuthorities(): string[] {
     this.roles = [];
     if (sessionStorage.getItem(TOKEN_KEY)) {
-      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach(
-        authority => {
+      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).forEach(
+        (authority: any) => {
           this.roles.push(authority.authority);
         }
       );

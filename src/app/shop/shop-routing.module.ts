@@ -11,6 +11,18 @@ const routes: Routes = [
     component: ShopComponent
   },
   {
+    path: 'category/:id',
+    component: ShopComponent
+  },
+  {
+    path: 'searchInshop/:keyword',
+    component: ShopComponent
+  },
+  {
+    path: 'searchbyPrice/:price',
+    component: ShopComponent
+  },
+  {
     path: 'cart',
     component: CartComponent
   },

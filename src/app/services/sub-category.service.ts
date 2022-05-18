@@ -13,9 +13,9 @@ export class SubCategoryService {
   apiServerUrl = environment.apiBaseUrl;
 
   choixmenu : string  = 'A';
-  dataForm:  FormGroup;
-  listData : SubCategoryDto[];
-  formData:  SubCategoryDto;
+  dataForm!:  FormGroup;
+  listData!: SubCategoryDto[];
+  formData!: SubCategoryDto;
 
   constructor(private http: HttpClient) {
   }

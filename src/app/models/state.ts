@@ -1,16 +1,16 @@
 import { Country, CountryDto } from "./country";
 
 export class State {
-    id: number;
-    name: string;
+    id!: number;
+    name!: string;
 
-    country: Country;
+    country!: Country;
 }
 
 export class StateDto {
-    id: number;
-    name: string;
+    id!: number;
+    name!: string;
 
-    countryDto: CountryDto;
+    countryDto!: CountryDto;
 
 }

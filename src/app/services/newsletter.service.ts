@@ -13,10 +13,10 @@ export class newsletterservice {
   apiServerUrl = environment.apiBaseUrl;
 
   choixmenu : string  = 'A';
-  listData : Newsletter[];
-  formData:  Newsletter;
+  listData!: Newsletter[];
+  formData!: Newsletter;
 
-  dataForm:  FormGroup;
+  dataForm!: FormGroup;
 
   constructor(private http: HttpClient) {
   }

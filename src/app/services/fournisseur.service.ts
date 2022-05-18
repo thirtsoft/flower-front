@@ -13,14 +13,13 @@ export class FournisseurService {
   apiServerUrl = environment.apiBaseUrl;
 
   choixmenu : string  = 'A';
-  listData : Fournisseur[];
-  formData:  Fournisseur;
+  listData!: Fournisseur[];
+  formData!: Fournisseur;
 
-  dataForm:  FormGroup;
+  dataForm!: FormGroup;
 
   constructor(private http: HttpClient) {
   }
-
 
   /**************** FournisseurDTO  *******/
 

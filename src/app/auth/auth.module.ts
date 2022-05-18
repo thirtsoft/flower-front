@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth/auth.component';
@@ -17,7 +19,10 @@ import { SuccessRegisterComponent } from './success-register/success-register.co
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    NgbModule
   ]
 })
 export class AuthModule { }

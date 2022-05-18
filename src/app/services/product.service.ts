@@ -12,21 +12,29 @@ export class ProductService {
   
   apiServerUrl = environment.apiBaseUrl;
 
-  choixmenu : string  = 'A';
-  listData : ProductDto[];
-  formData:  FormGroup;
+  choixmenu: string  = 'A';
+  listData!: ProductDto[];
+  formData!:  FormGroup;
 
   constructor(private http: HttpClient) {
   }
 
   /************   ProductDto  ***************/
 
-  public getProductDtos(): Observable<ProductDto[]> {
+  public getALLProductDTOs(): Observable<ProductDto[]> {
     return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/all`);
   }
 
   public getProductDtosOrderByIdDesc(): Observable<ProductDto[]> {
     return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchAllProductOrderByIdDesc`);
+  }
+
+  public getTop3ProductDTOsByIdDesc():  Observable<ProductDto[]> {
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchTop3ProductByOrderIdDesc`);
+  }
+
+  public getTop8ProductDTOsByIdDesc():  Observable<ProductDto[]> {
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchTop8ProductByOrderIdDesc`);
   }
 
   public getProductDtoById(prodId: number): Observable<ProductDto> {

@@ -1,5 +1,12 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination' ;
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CustomerRoutingModule } from './customer-routing.module';
 import { MainBodyComponent } from './body/main-body/main-body.component';
@@ -29,6 +36,7 @@ import { CategoryStartComponent } from './body/category-start/category-start.com
 import { OfferStartComponent } from './body/offer-start/offer-start.component';
 import { ProductStartComponent } from './body/product-start/product-start.component';
 import { SubscribeNewletterComponent } from './body/subscribe-newletter/subscribe-newletter.component';
+import { RatingComponent } from './body/rating/rating.component';
 
 
 @NgModule({
@@ -60,11 +68,19 @@ import { SubscribeNewletterComponent } from './body/subscribe-newletter/subscrib
     CategoryStartComponent,
     OfferStartComponent,
     ProductStartComponent,
-    SubscribeNewletterComponent
+    SubscribeNewletterComponent,
+    RatingComponent
   ],
   imports: [
     CommonModule,
-    CustomerRoutingModule
-  ]
+    CustomerRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  //  NgbModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    NgbModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CustomerModule { }

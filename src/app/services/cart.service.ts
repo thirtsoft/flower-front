@@ -12,27 +12,24 @@ export class CartService {
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
 
-
   shippingCost: number = 2000 ;
 
   constructor() { }
 
   addTocart(theCartItem: CartItem){
-    // check wether article/item is already in the cart
     let alreadyExistsInCart: boolean = false;
-    let existingCartItem: CartItem = undefined;
+    let existingCartItem: CartItem = undefined!;
+   // let existingCartItem: CartItem;
 
     if (this.cartItems.length > 0) {
-      existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.id === theCartItem.id);
+      existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.id === theCartItem.id)!;
 
       alreadyExistsInCart = (existingCartItem != undefined)
     }
 
     if (alreadyExistsInCart) {
-      // increment the quantity
       existingCartItem.quantity++;
     }else {
-      // add to the cart item array
       this.cartItems.push(theCartItem);
     }
 

@@ -1,4 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { NewsletterDto } from 'src/app/models/newsletter';
+import { newsletterservice } from 'src/app/services/newsletter.service';
 
 @Component({
   selector: 'app-subscribe-newletter',
@@ -7,9 +12,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubscribeNewletterComponent implements OnInit {
 
-  constructor() { }
+  newsletterDataDTO: NewsletterDto = new NewsletterDto();
 
-  ngOnInit(): void {
+  constructor(public crudApi: newsletterservice,
+              private toastr: ToastrService,
+              private router: Router
+  ){ }
+
+  ngOnInit(): void {}
+
+  subscribeToNewLetter() {
+    this.crudApi.addNewsletterDTO(this.newsletterDataDTO).subscribe(
+      (response: NewsletterDto) => {
+        this.toastr.success('avec succès','Inscris à notre newsletter', {
+          timeOut: 1500,
+          positionClass: 'toast-top-right',
+        });
+      },
+      (error: HttpErrorResponse) => {
+        this.toastr.error("Echec de votre inscription");
+      }
+    );
+ //   this.newsletterDataDTO = null;
+
   }
 
 }

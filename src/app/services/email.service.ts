@@ -13,19 +13,19 @@ export class EmailService {
 
   baseUrl = environment.apiBaseUrl;
 
-  choixmenu : string  = 'A';
-  listData : EmailDto[];
-  formData : EmailDto;
+  choixmenu: string  = 'A';
+  listData!: EmailDto[];
+  formData!: EmailDto;
 
-  dataForm:  FormGroup;
+  dataForm!:  FormGroup;
 
   constructor(private http: HttpClient) { }
 
-  getAllListEmailDTOs(): Observable<EmailDto[]> {
+  public getAllListEmailDTOs(): Observable<EmailDto[]> {
     return this.http.get<EmailDto[]>(`${this.baseUrl}/emails/all`);
   }
 
-  getAllListEmailDTOOrderIdDesc(): Observable<EmailDto[]> {
+  public getAllListEmailDTOOrderIdDesc(): Observable<EmailDto[]> {
     return this.http.get<EmailDto[]>(`${this.baseUrl}/emails/searchAllEmailsOrderByIdDesc`);
   }
 
@@ -57,7 +57,7 @@ export class EmailService {
     return this.http.get<EmailDto>(`${this.baseUrl}/emails/countNumberOfEmail`);
   }
 
-  deleteEmail(id: number): Observable<void> {
+  public deleteEmail(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/emails/delete/${id}`);
   }
 }
