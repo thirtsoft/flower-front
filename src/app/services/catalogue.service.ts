@@ -43,7 +43,7 @@ export class CatalogueService {
     return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/productsByScategories/${scatId}`);
   }
 
-  public getListProductDTOByPageable(page: any, size: any): Observable<ProductDto[]> {
+  public getListProductDTOByPageable(page: number, size: number): Observable<ProductDto[]> {
     return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchProductByPageables?page=`+page+"&size="+size);
   }
 

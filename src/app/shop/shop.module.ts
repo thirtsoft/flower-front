@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -34,7 +34,8 @@ import { SuccessOrderComponent } from './success-order/success-order.component';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
- //   NgbModule
-  ]
+    NgbModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ShopModule { }

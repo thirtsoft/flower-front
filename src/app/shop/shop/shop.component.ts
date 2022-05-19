@@ -56,7 +56,7 @@ export class ShopComponent implements OnInit {
     this.getNumberTotalOfProduct();
     this.getScategoryListDTOs();
     this.route.paramMap.subscribe(()=> {
-      this.getListProductDTOs();
+  //    this.getListProductDTOs();
       this.finishOrders();
     });
   }
@@ -149,6 +149,7 @@ export class ShopComponent implements OnInit {
     );
   }
 
+  /*
   getListProductDTOs() {
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
     this.priceSearch = +this.route.snapshot.paramMap.get('price')!;
@@ -161,6 +162,7 @@ export class ShopComponent implements OnInit {
     }
   }
 
+ 
   handlerListProductDTOs() {
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
     if (hasCategoryId) {
@@ -179,6 +181,7 @@ export class ShopComponent implements OnInit {
           this.currentPage - 1,
           this.size).subscribe(this.processResult());
   }
+  
 
   processResult() {
     return (data:any) => {
@@ -187,6 +190,7 @@ export class ShopComponent implements OnInit {
       this.productListDTOs = data['content'];
     }
   }
+  */
 
   getProductDTOByPageable() {
     this.catalService.getListProductDTOByPageable(this.currentPage, this.size)

@@ -76,7 +76,6 @@ import { RatingComponent } from './body/rating/rating.component';
     CustomerRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-  //  NgbModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
     NgbModule

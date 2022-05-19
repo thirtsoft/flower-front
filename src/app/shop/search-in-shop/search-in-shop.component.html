@@ -1,1 +1,11 @@
-<p>search-in-shop works!</p>
+<form action="">
+    <div class="input-group">
+        <!--  <input type="text" class="form-control" placeholder="Search by name"> -->
+        <input type="text" class="form-control" #searchInShopInput (keyup.enter)="searchProductInShop(searchInShopInput.value)" placeholder="Chercher par nom">
+        <div class="input-group-append">
+            <span type="submit" (click)="searchProductInShop(searchInShopInput.value)" class="input-group-text bg-transparent text-primary">
+                    <i class="fa fa-search"></i>
+                </span>
+        </div>
+    </div>
+</form>

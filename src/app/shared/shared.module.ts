@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 
@@ -25,14 +25,17 @@ import { HeaderComponent } from './header/header.component';
   imports: [
     CommonModule,
     RouterModule,
+    /*
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,*/
     TranslateModule.forRoot()
   ],
   exports: [
     CommonModule,
+    /*
     FormsModule,
     ReactiveFormsModule,
+    */
     TranslateModule,
     FooterComponent,
     FooterBottomComponent,
