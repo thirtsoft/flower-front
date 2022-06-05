@@ -37,6 +37,7 @@ import { OfferStartComponent } from './body/offer-start/offer-start.component';
 import { ProductStartComponent } from './body/product-start/product-start.component';
 import { SubscribeNewletterComponent } from './body/subscribe-newletter/subscribe-newletter.component';
 import { RatingComponent } from './body/rating/rating.component';
+import { SearchComponent } from './body/search/search.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { RatingComponent } from './body/rating/rating.component';
     OfferStartComponent,
     ProductStartComponent,
     SubscribeNewletterComponent,
-    RatingComponent
+    RatingComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,

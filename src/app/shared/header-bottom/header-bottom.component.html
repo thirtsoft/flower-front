@@ -1,1 +1,22 @@
-<p>header-bottom works!</p>
+<div class="row align-items-center py-3 px-xl-5">
+    <div class="col-lg-3 d-none d-lg-block">
+        <a routerLink="/" class="text-decoration-none">
+            <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+        </a>
+    </div>
+    <div class="col-lg-6 col-6 text-left">
+        <app-search></app-search>
+    </div>
+    <div class="col-lg-3 col-6 text-right">
+        <a href="" class="btn border">
+            <!-- <i class="fas fa-heart text-primary"></i> -->
+            <span>F. CFA</span>
+            <span class="badge">{{ totalPrice }}</span>
+        </a>
+        <a routerLink="/shop/cart" class="btn border">
+            <i class="fas fa-shopping-cart text-primary"></i>
+            <span class="badge"></span>
+            <span class="badge">{{totalQuantity}}</span>
+        </a>
+    </div>
+</div>

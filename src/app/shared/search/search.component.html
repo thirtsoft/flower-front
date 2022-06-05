@@ -1,0 +1,10 @@
+<form action="">
+    <div class="input-group">
+        <input type="text" class="form-control" #searchInput (keyup.enter)="searchProduct(searchInput.value)" placeholder="Search for products">
+        <div class="input-group-append">
+            <span (click)="searchProduct(searchInput.value)" class="input-group-text bg-transparent text-primary">
+                    <i class="fa fa-search"></i>
+                </span>
+        </div>
+    </div>
+</form>

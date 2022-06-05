@@ -11,6 +11,11 @@ import { FooterComponent } from './footer/footer.component';
 import { FooterBottomComponent } from './footer-bottom/footer-bottom.component';
 import { HeaderBottomComponent } from './header-bottom/header-bottom.component';
 import { HeaderComponent } from './header/header.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CategoryShippingComponent } from './category-shipping/category-shipping.component';
 
 
 
@@ -19,7 +24,11 @@ import { HeaderComponent } from './header/header.component';
     FooterComponent,
     FooterBottomComponent,
     HeaderBottomComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearchComponent,
+    TopBarComponent,
+    NavbarComponent,
+    CategoryShippingComponent
   
   ],
   imports: [
@@ -31,16 +40,18 @@ import { HeaderComponent } from './header/header.component';
     TranslateModule.forRoot()
   ],
   exports: [
-    CommonModule,
-    /*
+  //  CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    */
     TranslateModule,
     FooterComponent,
     FooterBottomComponent,
     HeaderBottomComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearchComponent,
+    TopBarComponent,
+    NavbarComponent,
+    CategoryShippingComponent
   ]
 
 })

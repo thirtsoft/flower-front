@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-botton-bar',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BottonBarComponent implements OnInit {
 
-  constructor() { }
+  totalPrice: number = 0;
+  totalQuantity: number = 0;
+  
+  constructor(public cartService: CartService
+  ) {}
 
   ngOnInit(): void {
+    this.updateCartStatus();
+
+  }
+
+  updateCartStatus() {
+    this.cartService.totalQuantity.subscribe(
+      data => {
+        this.totalQuantity = data
+      }
+    )
+    this.cartService.totalPrice.subscribe(
+      data => {
+        this.totalPrice = data
+      }
+    )
+
   }
 
 }

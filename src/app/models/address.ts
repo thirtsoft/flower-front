@@ -6,9 +6,9 @@ export class Address {
     zipcode!: string;
     city!: string;
     rue!: string;
+    street!: string;
+    country!: string;
     
-//    commande: Commande;
-    //    commande: Commande;
     state!: State;
 
 }

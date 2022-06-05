@@ -16,10 +16,11 @@ const routes: Routes = [
     path: 'product-detail/:reference',
     component: DetailProductComponent
   },
+  /*
   {
     path: 'single',
     component: DetailProductComponent
-  },
+  },*/
 
  
 ];

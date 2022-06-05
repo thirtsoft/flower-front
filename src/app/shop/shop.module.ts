@@ -15,6 +15,7 @@ import { SearchInShopComponent } from './search-in-shop/search-in-shop.component
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ShopComponent } from './shop/shop.component';
 import { SuccessOrderComponent } from './success-order/success-order.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -30,8 +31,11 @@ import { SuccessOrderComponent } from './success-order/success-order.component';
   imports: [
     CommonModule,
     ShopRoutingModule,
+    SharedModule,
+    /*
     FormsModule, 
     ReactiveFormsModule,
+    */
     Ng2SearchPipeModule,
     NgxPaginationModule,
     NgbModule

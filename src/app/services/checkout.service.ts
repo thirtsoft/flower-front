@@ -12,7 +12,7 @@ export class CheckoutService {
 
   apiServerUrl = environment.apiBaseUrl;
 
-  id;
+  id:any;
 
   constructor(private http: HttpClient,
               private tokenService: TokenStorageService
