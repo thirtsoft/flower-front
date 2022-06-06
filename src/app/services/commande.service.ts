@@ -14,7 +14,7 @@ export class orderservice {
 
   choixmenu : string  = 'A';
 
-  formData:  FormGroup;
+  formData!: FormGroup;
 
   constructor(private http: HttpClient) {
   }

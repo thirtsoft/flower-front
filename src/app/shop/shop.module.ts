@@ -31,11 +31,11 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     ShopRoutingModule,
-    SharedModule,
-    /*
+   // SharedModule,
+    
     FormsModule, 
     ReactiveFormsModule,
-    */
+    
     Ng2SearchPipeModule,
     NgxPaginationModule,
     NgbModule

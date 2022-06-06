@@ -28,18 +28,18 @@ export class AuthService {
   baseUrl_1 = 'http://localhost:8081/flowers/v1';
 
   choixmenu : string  = 'A';
-  dataForm:  FormGroup;
+  dataForm!: FormGroup;
 //  listData: ProfilInfo;
-  listData: UtilisateurDto;
-  listDataUsername: UpdateUsernameInfo;
+  listData!: UtilisateurDto;
+  listDataUsername!: UpdateUsernameInfo;
 
-  listDataProfil: ProfileInfo;
+  listDataProfil!: ProfileInfo;
 
   islogin = false ;
 
   profileInfo: ProfileInfo = {} as ProfileInfo;
-  userId;
-  user;
+  userId:any;
+  user:any;
   currentUser = {};
 
   constructor(private http: HttpClient,
@@ -52,12 +52,12 @@ export class AuthService {
     return this.http.post<Register>(AUTH_API + 'auth/signUp', info , httpOptions);
   }
 
-  attemptAuth(credentials): Observable<any> {
+  attemptAuth(credentials:any): Observable<any> {
     const loginData = {
       username: credentials.username,
       password: credentials.password
     };
-    return this.http.post(this.loginUrl, loginData, httpOptions);
+    return this.http.post(AUTH_API + 'auth/authenticated', loginData, httpOptions);
     this.islogin=true;
   }
 
@@ -69,14 +69,14 @@ export class AuthService {
     return this.http.get(AUTH_API + '/auth/currentLogginUser');
   }
 
-  getUserProfile(id): Observable<any> {
+ /*  getUserProfile(id:any): Observable<any> {
     return this.http.get(`${this.baseUrl_1}/utilisateurs/${id}`, httpOptions).pipe(
-      map((res: Response) => {
+      map((res:Response) => {
         return res || {}
       }),
       catchError(this.handleError)
     )
-  }
+  } */
 
   getUserByUsername(username: string): Observable<any> {
     return this.http.get<any>(this.baseUrl_1 + `/getUserByUsername/${username}`);
