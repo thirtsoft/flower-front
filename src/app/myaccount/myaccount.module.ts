@@ -11,6 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -27,7 +28,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    UpdateAccountComponent, UpdatePasswordComponent, UpdateUsernameComponent, InvoiceComponent
   ]
 })
 export class MyaccountModule { }

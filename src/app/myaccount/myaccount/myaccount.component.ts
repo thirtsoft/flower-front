@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { TokenStorageService } from 'src/app/auth/services/token-storage.service';
@@ -8,6 +9,8 @@ import { CommandeDto } from 'src/app/models/commande';
 import { UtilisateurDto } from 'src/app/models/utilisateur';
 import { orderservice } from 'src/app/services/commande.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
+import { UpdateAccountComponent } from '../update-account/update-account.component';
+import { UpdatePasswordComponent } from '../update-password/update-password.component';
 
 @Component({
   selector: 'app-myaccount',
@@ -53,7 +56,7 @@ export class MyaccountComponent implements OnInit {
               public authService: AuthService,
               public userService: UtilisateurService,
               private router: Router,
-      //        public matDialog: MatDialog,
+              public matDialog: MatDialog,
               private route: ActivatedRoute,
   ) {
     //--for reload componant
@@ -67,7 +70,6 @@ export class MyaccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.paramId = this.route.snapshot.paramMap.get('id');
      console.log('Param--', this.paramId);
     if(this.paramId  && this.paramId  > 0){
@@ -137,26 +139,22 @@ export class MyaccountComponent implements OnInit {
   }
 
   addEditCustomerUsername(item: UtilisateurDto) {
-    /*
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
     this.authService.listData = Object.assign({}, item);
-    this.matDialog.open(UpdateCustomerUsernameComponent, dialogConfig);
-    */
+    this.matDialog.open(UpdateAccountComponent, dialogConfig);
   }
 
   addEditCustomerPassword(item: UtilisateurDto) {
-    /*
     console.log(item);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
     this.authService.listData = Object.assign({}, item);
-    this.matDialog.open(UpdateCustomerPasswordComponent, dialogConfig);
-    */
+    this.matDialog.open(UpdatePasswordComponent, dialogConfig);
 
   }
 
@@ -164,12 +162,11 @@ export class MyaccountComponent implements OnInit {
     console.log('Data send--', this.listDataProfil);
     this.userService.updateUtilisateurDto(this.listDataProfil.id, this.listDataProfil).subscribe(
       (response: UtilisateurDto) => {
-        this.toastr.warning('avec succès','Utulisateur Modifiée', {
+        this.toastr.warning('avec succès','Informations Modifiée', {
           timeOut: 1500,
           positionClass: 'toast-top-right',
         });
-
-        this.router.navigateByUrl("/").then(() => {
+        this.router.navigateByUrl("account/my-account/" + this.userId).then(() => {
           window.location.reload();
         });
       },
