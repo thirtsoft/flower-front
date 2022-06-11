@@ -16,6 +16,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { ShopComponent } from './shop/shop.component';
 import { SuccessOrderComponent } from './success-order/success-order.component';
 import { SharedModule } from '../shared/shared.module';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { SharedModule } from '../shared/shared.module';
     WishlistComponent,
     ShopComponent,
     SuccessOrderComponent,
+    InvoiceComponent,
   ],
   imports: [
     CommonModule,

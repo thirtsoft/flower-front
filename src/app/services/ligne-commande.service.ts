@@ -11,7 +11,7 @@ export class orderItemservice {
   
   apiServerUrl = environment.apiBaseUrl;
 
-  listData : LigneCommandeDto[];
+  listData!: LigneCommandeDto[];
 
   constructor(private http: HttpClient) {
   }

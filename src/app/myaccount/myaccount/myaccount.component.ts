@@ -181,7 +181,7 @@ export class MyaccountComponent implements OnInit {
   }
 
   viewCommande(item: CommandeDto) {
-    this.router.navigateByUrl('facture/' + item.id);
+    this.router.navigateByUrl('account/facture/' + item.id);
   }
 
   logout(){
