@@ -323,12 +323,12 @@
                         <h5 class="font-weight-bold">{{ totalPrice + shippingCost }}f</h5>
                     </div>
                     <button *ngIf="!this.isLoggedIn" class="btn btn-block btn-primary my-3 py-3"
-                    routerLink="/auth/login">
+                        routerLink="/auth/login">
                         Fianlisez votre Achat</button>
-                    <!-- <button *ngIf="this.isLoggedIn" routerLink="/shop/checkout" class="btn btn-block btn-primary my-3 py-3">
-                        Fianlisez votre Achat</button> -->
-                    <button routerLink="/shop/checkout" class="btn btn-block btn-primary my-3 py-3">
-                            Fianlisez votre Achat</button>
+                    <button *ngIf="this.isLoggedIn" routerLink="/shop/checkout" class="btn btn-block btn-primary my-3 py-3">
+                        Fianlisez votre Achat</button> 
+                    <!-- <button routerLink="/shop/checkout" class="btn btn-block btn-primary my-3 py-3">
+                            Fianlisez votre Achat</button> -->
                 </div>
             </div>
         </div>

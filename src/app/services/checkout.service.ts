@@ -25,7 +25,7 @@ export class CheckoutService {
   }
 
   placeToOrderWithUser(purchase: Purchase, id: number): Observable<any> {
-    return this.http.post<GetResponsePurchase>(`${this.apiServerUrl}/checkout/placeToOrderWithUser?id=`+id, purchase);
+    return this.http.post<GetResponsePurchase>(`${this.apiServerUrl}/checkout/placeToOrderWithLoginUser?id=`+id, purchase);
   }
 
 

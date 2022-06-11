@@ -211,7 +211,7 @@ export class CheckoutComponent implements OnInit {
       //    reset checkout form
          this.resetCart();
          console.log("Response is", data);
-         this.router.navigateByUrl("success-order");
+         this.router.navigateByUrl("/shop/success-order");
       },
       error=>{
         alert(`there was a error: ${error.message}`);
