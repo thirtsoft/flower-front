@@ -25,16 +25,19 @@ export class SubscribeNewletterComponent implements OnInit {
     this.crudApi.addNewsletterDTO(this.newsletterDataDTO).subscribe(
       (response: NewsletterDto) => {
         this.toastr.success('avec succès','Inscris à notre newsletter', {
-          timeOut: 1500,
+          timeOut: 4500,
           positionClass: 'toast-top-right',
         });
+        this.reload();
       },
       (error: HttpErrorResponse) => {
         this.toastr.error("Echec de votre inscription");
       }
     );
- //   this.newsletterDataDTO = null;
+  }
 
+  reload() {
+    window.location.reload();
   }
 
 }

@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { TokenStorageService } from 'src/app/auth/services/token-storage.service';
 import { ProductDto } from 'src/app/models/product';
 import { RatingDto } from 'src/app/models/rating';
@@ -28,11 +29,11 @@ export class RatingComponent implements OnInit {
   username!: string;
 
   constructor(private ratService: RatingService,
-              private catalogueService: CatalogueService,
               private prodService: ProductService,
               private tokenService: TokenStorageService,
               public fb: FormBuilder,
-              private actRoute: ActivatedRoute
+              private actRoute: ActivatedRoute,
+              private toastr: ToastrService,
   ) { }
 
   get f() { return this.formData.controls; }
@@ -41,6 +42,7 @@ export class RatingComponent implements OnInit {
   ngOnInit(): void {
     this.infoForm();
     this.getSingleProductDTO();
+
     this.isLoggedIn = !!this.tokenService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenService.getUser();
@@ -78,26 +80,32 @@ export class RatingComponent implements OnInit {
   onSubmit() {
     console.log(this.formData.value);
     console.log(this.formData.value, this.ref, this.ratService.id);
+    console.log(this.ratService.id);
     this.ratService.addRatingToArticle(this.formData.value, this.ref, this.ratService.id)
       .subscribe(
       (response: RatingDto) => {
-        alert("Note Attribué avec succès");
+        this.toastr.success('avec succès','Note Attribué', {
+          timeOut: 4500,
+          positionClass: 'toast-top-right',
+        });
         console.log('Response--', response);
-
+        this.reload();
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        this.toastr.error("Note non attribué");
       }
 
     );
 
   }
 
+  reload() {
+    window.location.reload();
+  }
+
 
   onSelectFile(event:any) {
-   // selectionner une image et la garder
     const file = event.target.files[0];
-  //  this.articleFile = file;
   }
 
 }

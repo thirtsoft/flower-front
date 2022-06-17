@@ -48,7 +48,7 @@ export class RatingService {
   }
 
   public addRatingToArticle(ratDTO: RatingDto, reference: string, userId:number): Observable<RatingDto> {
-    return this.http.post<RatingDto>(`${this.apiServerUrl}/ratings/createRatingToArticleWithUser?reference=${reference}&userId=${userId}`, ratDTO);
+    return this.http.post<RatingDto>(`${this.apiServerUrl}/ratings/createRatingToArticleWithUser?reference=${reference}&id=${userId}`, ratDTO);
   }
 
   public updateRatingDto(ratId: number, ratDTO: RatingDto): Observable<RatingDto> {

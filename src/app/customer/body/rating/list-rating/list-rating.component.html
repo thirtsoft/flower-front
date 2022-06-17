@@ -1,0 +1,11 @@
+<div class="media mb-4" *ngFor="let rat of ratingListDTOs; let i=index;">
+    <img src="assets/customer/img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 35px;">
+    <div class="media-body">
+        <h6>{{ rat.utilisateurDto?.name }}<small> - <i>{{ rat.createdDate | date:'dd/MM/yyyy' }}</i></small></h6>
+        <div class="text-primary mb-2">
+            <ngb-rating [(rate)]="rat.nbreEtoile" [id]="'rating3'" [readonly]="true" [max]="maxRatingValue">
+            </ngb-rating>
+        </div>
+        <p>{{ rat.observation }}</p>
+    </div>
+</div>
