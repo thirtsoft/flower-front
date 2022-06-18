@@ -8,6 +8,7 @@ import { AuthComponent } from './auth/auth.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SuccessRegisterComponent } from './success-register/success-register.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -20,9 +21,12 @@ import { SuccessRegisterComponent } from './success-register/success-register.co
   imports: [
     CommonModule,
     AuthRoutingModule,
+    SharedModule,
+    /*
     FormsModule, 
     ReactiveFormsModule,
     NgbModule
+    */
   ]
 })
 export class AuthModule { }

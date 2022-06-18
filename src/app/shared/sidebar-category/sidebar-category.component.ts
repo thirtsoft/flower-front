@@ -1,14 +1,14 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { SubCategoryDto } from 'src/app/models/sub-category';
+import { HttpErrorResponse } from '@angular/common/http';
 import { SubCategoryService } from 'src/app/services/sub-category.service';
+import { SubCategoryDto } from 'src/app/models/sub-category';
 
 @Component({
-  selector: 'app-category-brand',
-  templateUrl: './category-brand.component.html',
-  styleUrls: ['./category-brand.component.scss']
+  selector: 'app-sidebar-category',
+  templateUrl: './sidebar-category.component.html',
+  styleUrls: ['./sidebar-category.component.scss']
 })
-export class CategoryBrandComponent implements OnInit {
+export class SidebarCategoryComponent implements OnInit {
 
   subCategoriesListDTOs!: SubCategoryDto[];
 
@@ -31,5 +31,5 @@ export class CategoryBrandComponent implements OnInit {
     );
 
   }
-  
+
 }

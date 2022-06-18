@@ -7,11 +7,13 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { UpdateUsernameComponent } from './update-username/update-username.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
-import { SharedModule } from '../shared/shared.module';
+//import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -26,10 +28,15 @@ import { MatDialogModule } from '@angular/material/dialog';
     CommonModule,
     MyaccountRoutingModule,
     SharedModule,
+    /*
+    FormsModule, 
+    ReactiveFormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
     NgbModule,
-    MatDialogModule
+    */
+    MatDialogModule,
+    
   ],
   entryComponents: [
     UpdateAccountComponent, UpdatePasswordComponent, UpdateUsernameComponent, InvoiceComponent

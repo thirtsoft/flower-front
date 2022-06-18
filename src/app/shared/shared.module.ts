@@ -2,56 +2,79 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
-import { RouterModule } from '@angular/router';
+//import { RouterModule } from '@angular/router';
 //import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+//import { TranslateModule } from '@ngx-translate/core';
 
-
-import { FooterComponent } from './footer/footer.component';
-import { FooterBottomComponent } from './footer-bottom/footer-bottom.component';
-import { HeaderBottomComponent } from './header-bottom/header-bottom.component';
-import { HeaderComponent } from './header/header.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarCategoryComponent } from './sidebar-category/sidebar-category.component';
+import { RouterModule } from '@angular/router';
+import { TopBarComponent } from './top/top-bar/top-bar.component';
+import { NavBarComponent } from './top/nav-bar/nav-bar.component';
+import { MainTopComponent } from './top/main-top/main-top.component';
+import { BottonBarComponent } from './top/botton-bar/botton-bar.component';
+import { MainFooterComponent } from './bottom/main-footer/main-footer.component';
+import { FooterBottomComponent } from './bottom/footer-bottom/footer-bottom.component';
+import { FooterComponent } from './bottom/footer/footer.component';
 import { CategoryShippingComponent } from './category-shipping/category-shipping.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @NgModule({
   declarations: [
-    FooterComponent,
-    FooterBottomComponent,
-    HeaderBottomComponent,
-    HeaderComponent,
-    SearchComponent,
     TopBarComponent,
-    NavbarComponent,
-    CategoryShippingComponent
-  
+    MainTopComponent,
+    BottonBarComponent,
+    NavBarComponent,
+    SearchComponent,
+    CategoryShippingComponent,
+    SidebarCategoryComponent,
+    MainFooterComponent,
+    FooterBottomComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    NgbModule,
     /*
     FormsModule,
     ReactiveFormsModule,*/
-    TranslateModule.forRoot()
+ //   TranslateModule.forRoot()
   ],
   exports: [
-  //  CommonModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    NgbModule,
+  //  FormsModule,
+  /*
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
-    FooterComponent,
-    FooterBottomComponent,
-    HeaderBottomComponent,
-    HeaderComponent,
-    SearchComponent,
+    */
+  //  SharedModule,
     TopBarComponent,
-    NavbarComponent,
-    CategoryShippingComponent
+    MainTopComponent,
+    BottonBarComponent,
+    NavBarComponent,
+    SearchComponent,
+    CategoryShippingComponent,
+    SidebarCategoryComponent,
+    MainFooterComponent,
+    FooterBottomComponent,
+    FooterComponent
   ]
 
 })

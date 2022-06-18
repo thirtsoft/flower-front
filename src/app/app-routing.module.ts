@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 
 const routes: Routes = [
@@ -11,11 +11,13 @@ const routes: Routes = [
   
   {
     path: 'shop',
-    loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
+    loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule),
+    data: { preload: true }
   },
   {
     path: 'account',
-    loadChildren: () => import('./myaccount/myaccount.module').then(m => m.MyaccountModule)
+    loadChildren: () => import('./myaccount/myaccount.module').then(m => m.MyaccountModule),
+    data: { preload: true }
   },
   { 
     path: 'pages',
@@ -23,11 +25,14 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) 
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    data: { preload: true }
   },
   { 
     path: 'elements', 
-    loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule) },
+    loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule),
+    data: { preload: true }
+   },
   {
     path: '**', // Navigate to Home Page if not found any page
     redirectTo: 'home/fashion',
@@ -38,7 +43,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+//  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(
+    routes,
+    {
+      preloadingStrategy: PreloadAllModules
+    }
+  )
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

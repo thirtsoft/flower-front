@@ -16,6 +16,7 @@ import { FaqComponent } from './faq/faq.component';
 import { ErrorComponent } from './error/error.component';
 import { BlogComponent } from './blog/blog.component';
 import { PagesComponent } from './pages/pages.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -31,10 +32,13 @@ import { PagesComponent } from './pages/pages.component';
   imports: [
     CommonModule,
     PagesRoutingModule,
+    /*
     FormsModule, 
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
+    */
+    SharedModule
   //  NgbModule
   ]
 })

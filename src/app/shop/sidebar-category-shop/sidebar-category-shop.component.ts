@@ -4,11 +4,11 @@ import { SubCategoryDto } from 'src/app/models/sub-category';
 import { SubCategoryService } from 'src/app/services/sub-category.service';
 
 @Component({
-  selector: 'app-category-brand',
-  templateUrl: './category-brand.component.html',
-  styleUrls: ['./category-brand.component.scss']
+  selector: 'app-sidebar-category-shop',
+  templateUrl: './sidebar-category-shop.component.html',
+  styleUrls: ['./sidebar-category-shop.component.scss']
 })
-export class CategoryBrandComponent implements OnInit {
+export class SidebarCategoryShopComponent implements OnInit {
 
   subCategoriesListDTOs!: SubCategoryDto[];
 
@@ -31,5 +31,6 @@ export class CategoryBrandComponent implements OnInit {
     );
 
   }
-  
+
+
 }

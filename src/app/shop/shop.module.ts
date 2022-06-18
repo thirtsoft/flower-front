@@ -15,8 +15,8 @@ import { SearchInShopComponent } from './search-in-shop/search-in-shop.component
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ShopComponent } from './shop/shop.component';
 import { SuccessOrderComponent } from './success-order/success-order.component';
+import { SidebarCategoryShopComponent } from './sidebar-category-shop/sidebar-category-shop.component';
 import { SharedModule } from '../shared/shared.module';
-import { InvoiceComponent } from './invoice/invoice.component';
 
 
 @NgModule({
@@ -28,19 +28,19 @@ import { InvoiceComponent } from './invoice/invoice.component';
     WishlistComponent,
     ShopComponent,
     SuccessOrderComponent,
-    InvoiceComponent,
+    SidebarCategoryShopComponent,
   ],
   imports: [
     CommonModule,
     ShopRoutingModule,
-   // SharedModule,
-    
+    SharedModule,
+    /*
     FormsModule, 
     ReactiveFormsModule,
-    
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    NgbModule
+    NgbModule,
+    */
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
