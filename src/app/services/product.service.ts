@@ -33,6 +33,10 @@ export class ProductService {
     return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchTop3ProductByOrderIdDesc`);
   }
 
+  public getTop4ProductDTOsByIdDesc():  Observable<ProductDto[]> {
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchTop4ProductByOrderIdDesc`);
+  }
+
   public getTop8ProductDTOsByIdDesc():  Observable<ProductDto[]> {
     return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchTop8ProductByOrderIdDesc`);
   }

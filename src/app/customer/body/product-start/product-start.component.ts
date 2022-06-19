@@ -24,7 +24,6 @@ export class ProductStartComponent implements OnInit {
   constructor(public catalogueService: CatalogueService,
               private cartService: CartService,
               private toastr: ToastrService,
-              private router: Router,
               private activeRoute: ActivatedRoute
 ){ }
 

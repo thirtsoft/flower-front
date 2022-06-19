@@ -30,6 +30,7 @@ import { RatingComponent } from './body/rating/rating.component';
 import { ListRatingComponent } from './body/rating/list-rating/list-rating.component';
 import { SharedModule } from '../shared/shared.module';
 import { MainBodyComponent } from './body/main-body/main-body.component';
+import { Top4ProductListComponent } from './body/top4-product-list/top4-product-list.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { MainBodyComponent } from './body/main-body/main-body.component';
     SubscribeNewletterComponent,
     RatingComponent,
  //   SearchComponent,
-    ListRatingComponent
+    ListRatingComponent,
+ Top4ProductListComponent
   ],
   imports: [
     CommonModule,
