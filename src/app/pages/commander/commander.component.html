@@ -1,0 +1,91 @@
+<!-- Topbar Start -->
+<div class="container-fluid">
+    <app-main-top></app-main-top>
+</div>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div class="container-fluid">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                <h6 class="m-0">Categories</h6>
+                <i class="fa fa-angle-down text-dark"></i>
+            </a>
+            <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 1;">
+                <app-sidebar-category></app-sidebar-category>
+            </nav>
+        </div>
+        <div class="col-lg-9">
+            <app-nav-bar></app-nav-bar>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 250px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">PASSER UNE COMMANDE</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a routerLink="/">Accueil</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0"> Comment Passer et Suivre ma Commande ?</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+
+<!-- Contact Start -->
+<div class="container">
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span class="px-2">
+            Suivre les étapes suivantes pour passer votre commande</span></h2>
+    </div>
+
+    <div class="text-center mb-4">
+        <span> 1. choisir directement la catégorie</span>
+        <img class="img-fluid" src="assets/customer/img/carousel-1.jpg" alt="Image">
+
+    </div>
+    <br>
+    <div class="text-center mb-4">
+        <span> 2. En utilisant <strong>la barre de recherche</strong>, si vous avez déjà quelque chose de spécifique en tête, tapez ce que vous recherchez dans le champ de recherche en haut de la page. Vous trouverez tous les produits associés</span>
+        <img class="img-fluid" src="assets/customer/img/carousel-1.jpg" alt="Image">
+    </div>
+    <br>
+    <div class="text-center mb-4">
+        <span> 3. En utilisant <strong>les bannières</strong>, 
+            si l'une des campagnes vous intéresse, cliquez sur l'une des bannières pour découvrir une large gamme de produits. Une fois que vous avez trouvé l'élément qui vous intéresse, vous cliquez dessus pour accéder à ses détails</span>
+        <img class="img-fluid" src="assets/customer/img/carousel-1.jpg" alt="Image">
+    </div>
+    <br>
+    <div class="text-center mb-4">
+        <span> 4. Cliquez <strong>J'achète</strong>, 
+            La date d'estimation de livraison est affichée sous les informations de livraison</span>
+        <img class="img-fluid" src="assets/customer/img/carousel-1.jpg" alt="Image">
+    </div>
+
+    <br>
+    <div class="text-center mb-4">
+        <span> 4. Cliquez <strong>J'achète</strong>, 
+            La date d'estimation de livraison est affichée sous les informations de livraison</span>
+        <img class="img-fluid" src="assets/customer/img/carousel-1.jpg" alt="Image">
+    </div>
+
+    <!-- End .col-lg-6 -->
+
+
+    <!-- End .col-lg-6 -->
+
+</div>
+<!-- Contact End -->
+
+
+<!-- Footer Start -->
+<app-footer></app-footer>
+<!-- Footer End -->
+<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

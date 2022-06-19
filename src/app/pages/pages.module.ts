@@ -19,6 +19,8 @@ import { PagesComponent } from './pages/pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { SuccessEmailComponent } from './success-email/success-email.component';
 import { TermesComponent } from './termes/termes.component';
+import { PayementComponent } from './payement/payement.component';
+import { CommanderComponent } from './commander/commander.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { TermesComponent } from './termes/termes.component';
     PagesComponent,
     SuccessEmailComponent,
     TermesComponent,
+    PayementComponent,
+    CommanderComponent,
   ],
   imports: [
     CommonModule,

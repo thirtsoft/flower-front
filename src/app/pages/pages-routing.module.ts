@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { BlogComponent } from './blog/blog.component';
+import { CommanderComponent } from './commander/commander.component';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error/error.component';
 import { FaqComponent } from './faq/faq.component';
 import { PagesComponent } from './pages/pages.component';
+import { PayementComponent } from './payement/payement.component';
 import { SuccessEmailComponent } from './success-email/success-email.component';
 import { TermesComponent } from './termes/termes.component';
 
@@ -25,6 +27,14 @@ const routes: Routes = [
   {
     path: 'email-success',
     component: SuccessEmailComponent
+  },
+  {
+    path: 'aide-commande',
+    component: CommanderComponent
+  },
+  {
+    path: 'aide-paiement',
+    component: PayementComponent
   },
   {
     path: 'faq',

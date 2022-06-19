@@ -20,27 +20,45 @@
                 </div>
             </div>
             <a routerLink="/pages/contact" class="nav-item nav-link">Contact</a>
+
         </div>
         <!--  <div class="navbar-nav ml-auto py-0">
             <a routerLink="/auth/login" class="nav-item nav-link">Login</a>
             <a routerLink="/auth/register" class="nav-item nav-link">Register</a>
         </div> -->
-        <div class="nav-item dropdown navbar-nav">
-            <a *ngIf="!this.username" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-user"></i>&nbsp; Se connecter</a>
-            <a *ngIf="this.username" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-user"></i>&nbsp; {{ username }}</a>
-            <div class="dropdown-menu rounded-0 m-0" style="width: 200px;">
-                <a routerLink="/auth/login" class="btn btn-primary btn-block">Se connecter</a>
-                <a routerLink="/auth/register" class="nav-item nav-link">
-                    <i class="fa fa-user-circle"></i> &nbsp; S'inscrire</a>
-                <a *ngIf="!this.isLoggedIn" routerLink="/auth/login" class="nav-item nav-link" style="cursor:pointer;">
-                    <i class="fas fa-tachometer-alt"></i>&nbsp; Vos commandes</a>
-                <a *ngIf="this.isLoggedIn" (click)="getUserOrder()" class="nav-item nav-link" style="cursor:pointer;">
-                    <i class="fas fa-tachometer-alt"></i>&nbsp; Vos commandes</a>
-                <a *ngIf="this.isLoggedIn" (click)="logout()" class="nav-item nav-link" style="cursor:pointer;">
-                    <i class='fas fa-sign-out-alt'></i>&nbsp; Deconnexion</a>
+        <div class="nav-item navbar-nav">
+            <div class="nav-item dropdown">
+                <a *ngIf="!this.username" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user"></i>&nbsp; Se connecter</a>
+                <a *ngIf="this.username" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user"></i>&nbsp; {{ username }}</a>
+                <div class="dropdown-menu rounded-0 m-0" style="width: 200px;">
+                    <a routerLink="/auth/login" class="btn btn-primary btn-block">Se connecter</a>
+                    <a routerLink="/auth/register" class="nav-item nav-link">
+                        <i class="fa fa-user-circle"></i> &nbsp; S'inscrire</a>
+                    <a *ngIf="!this.isLoggedIn" routerLink="/auth/login" class="nav-item nav-link" style="cursor:pointer;">
+                        <i class="fas fa-tachometer-alt"></i>&nbsp; Vos commandes</a>
+                    <a *ngIf="this.isLoggedIn" (click)="getUserOrder()" class="nav-item nav-link" style="cursor:pointer;">
+                        <i class="fas fa-tachometer-alt"></i>&nbsp; Vos commandes</a>
+                    <a *ngIf="this.isLoggedIn" (click)="logout()" class="nav-item nav-link" style="cursor:pointer;">
+                        <i class='fas fa-sign-out-alt'></i>&nbsp; Deconnexion</a>
+                </div>
+            </div>
+
+            <div class="nav-item dropdown">
+
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp; Aide</a>
+                <div class="dropdown-menu rounded-0 m-0" style="width: 100px;">
+                    <a routerLink="/pages/contact" class="btn btn-primary btn-block">Support</a>
+                    <a routerLink="/pages/aide-commande" class="nav-item nav-link">
+                        commander ?</a>
+                    <a routerLink="/pages/aide-paiement" class="nav-item nav-link" style="cursor:pointer;">
+                        Paiement ?</a>
+                </div>
+
             </div>
         </div>
+
     </div>
 </nav>
