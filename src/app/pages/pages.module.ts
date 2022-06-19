@@ -17,6 +17,8 @@ import { ErrorComponent } from './error/error.component';
 import { BlogComponent } from './blog/blog.component';
 import { PagesComponent } from './pages/pages.component';
 import { SharedModule } from '../shared/shared.module';
+import { SuccessEmailComponent } from './success-email/success-email.component';
+import { TermesComponent } from './termes/termes.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { SharedModule } from '../shared/shared.module';
     ErrorComponent,
     BlogComponent,
     PagesComponent,
+    SuccessEmailComponent,
+    TermesComponent,
   ],
   imports: [
     CommonModule,

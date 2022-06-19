@@ -6,6 +6,8 @@ import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error/error.component';
 import { FaqComponent } from './faq/faq.component';
 import { PagesComponent } from './pages/pages.component';
+import { SuccessEmailComponent } from './success-email/success-email.component';
+import { TermesComponent } from './termes/termes.component';
 
 const routes: Routes = [
   {
@@ -21,8 +23,16 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
+    path: 'email-success',
+    component: SuccessEmailComponent
+  },
+  {
     path: 'faq',
     component: FaqComponent
+  },
+  {
+    path: 'temes-conditions',
+    component: TermesComponent
   },
   {
     path: 'error',
