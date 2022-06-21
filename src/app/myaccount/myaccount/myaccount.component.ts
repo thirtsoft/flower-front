@@ -155,8 +155,8 @@ export class MyaccountComponent implements OnInit {
     dialogConfig.width = "50%";
     this.authService.listData = Object.assign({}, item);
     this.matDialog.open(UpdatePasswordComponent, dialogConfig);
-
   }
+  
 
   update() {
     console.log('Data send--', this.listDataProfil);

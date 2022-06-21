@@ -30,6 +30,10 @@ export class SubCategoryService {
     return this.http.get<SubCategoryDto[]>(`${this.apiServerUrl}/subcategories/searchAllSubCategoriesOrderByIdDesc`);
   }
 
+  public getSuCategoriesDtosByCategoryId(catId: number): Observable<SubCategoryDto[]> {
+    return this.http.get<SubCategoryDto[]>(`${this.apiServerUrl}/subcategories/searchSubcategoryByCategoryId/${catId}`);
+  }
+
   public getSubCategoryDtoById(scatId: number): Observable<SubCategoryDto> {
     return this.http.get<SubCategoryDto>(`${this.apiServerUrl}/subcategories/findById/${scatId}`);
   }

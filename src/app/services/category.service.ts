@@ -13,8 +13,8 @@ export class CategoryService {
   apiServerUrl = environment.apiBaseUrl;
 
   choixmenu : string  = 'A';
-  dataForm:  FormGroup;
-  listData : CategoryDto[];
+  dataForm!:  FormGroup;
+  listData!: CategoryDto[];
 
   constructor(private http: HttpClient) {
   }
