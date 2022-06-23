@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -28,6 +28,14 @@ export class UpdatePasswordComponent implements OnInit {
   ngOnInit() {
   }
 
+  infoForm() {
+    this.crudApi.dataForm = this.fb.group({
+      username: [this.crudApi.dataForm.value.id,  [Validators.required]],
+      oldPassword: [this.crudApi.dataForm.value.oldPassword, [Validators.required]],
+      newPassword: [this.crudApi.dataForm.value.newPassword, [Validators.required]],
+    });
+  }
+/*
   infoForm(form?: any) {
     if(form = null)
       form.ResetForm();
@@ -37,6 +45,7 @@ export class UpdatePasswordComponent implements OnInit {
       newPassword: '',
     };
   }
+  */
 
   ResetForm() {
     this.crudApi.dataForm.reset();
@@ -46,7 +55,7 @@ export class UpdatePasswordComponent implements OnInit {
     console.log(this.formDataProfile);
     this.crudApi.updatePassword(this.formDataProfile).
     subscribe( data => {
-      this.dialogRef.close();
+    //  this.dialogRef.close();
       this.toastr.warning('veuillez vous reconnectez','Votre Mot de pqsse a ete modifie avec success', {
         timeOut: 1500,
         positionClass: 'toast-top-right',

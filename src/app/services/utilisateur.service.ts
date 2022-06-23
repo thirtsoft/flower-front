@@ -11,6 +11,8 @@ export class UtilisateurService {
 
   apiServerUrl = environment.apiBaseUrl;
 
+  public listData!: UtilisateurDto;
+
   constructor(private http: HttpClient) {
   }
 

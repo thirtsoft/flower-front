@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { TokenStorageService } from 'src/app/auth/services/token-storage.service';
@@ -11,6 +11,7 @@ import { orderservice } from 'src/app/services/commande.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { UpdateAccountComponent } from '../update-account/update-account.component';
 import { UpdatePasswordComponent } from '../update-password/update-password.component';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-myaccount',
@@ -55,9 +56,12 @@ export class MyaccountComponent implements OnInit {
               public toastr: ToastrService,
               public authService: AuthService,
               public userService: UtilisateurService,
+              public fb: FormBuilder,
               private router: Router,
               public matDialog: MatDialog,
               private route: ActivatedRoute,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              public dialogRef:MatDialogRef<UpdatePasswordComponent>,
   ) {
     //--for reload componant
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -147,6 +151,7 @@ export class MyaccountComponent implements OnInit {
     this.matDialog.open(UpdateAccountComponent, dialogConfig);
   }
 
+  /*
   addEditCustomerPassword(item: UtilisateurDto) {
     console.log(item);
     const dialogConfig = new MatDialogConfig();
@@ -155,6 +160,14 @@ export class MyaccountComponent implements OnInit {
     dialogConfig.width = "50%";
     this.authService.listData = Object.assign({}, item);
     this.matDialog.open(UpdatePasswordComponent, dialogConfig);
+  }
+  */
+
+  addEditCustomerPassword(item : UtilisateurDto) {
+    this.authService.choixmenu == 'M';
+  //  this.authService.listData = Object.assign({},item);
+    this.authService.dataForm = this.fb.group(Object.assign({},item));
+    this.router.navigate(['/account/my-account/'+this.userId+'/update-password', this.authService.dataForm]);
   }
   
 

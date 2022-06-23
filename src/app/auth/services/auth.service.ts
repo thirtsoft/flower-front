@@ -25,15 +25,15 @@ export class AuthService {
 
   public loginUrl = 'http://localhost:8081/flowers/v1/auth/authenticated';
 
-  baseUrl_1 = 'http://localhost:8081/flowers/v1';
+  public baseUrl_1 = 'http://localhost:8081/flowers/v1';
 
-  choixmenu : string  = 'A';
-  dataForm!: FormGroup;
+  public choixmenu : string  = 'A';
+  public dataForm!: FormGroup;
 //  listData: ProfilInfo;
-  listData!: UtilisateurDto;
-  listDataUsername!: UpdateUsernameInfo;
+  public listData!: UtilisateurDto;
+  public listDataUsername!: UpdateUsernameInfo;
 
-  listDataProfil!: ProfileInfo;
+  public listDataProfil!: ProfileInfo;
 
   islogin = false ;
 
