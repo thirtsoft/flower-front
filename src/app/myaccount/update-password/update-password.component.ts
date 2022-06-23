@@ -55,20 +55,20 @@ export class UpdatePasswordComponent implements OnInit {
     console.log(this.formDataProfile);
     this.crudApi.updatePassword(this.formDataProfile).
     subscribe( data => {
-    //  this.dialogRef.close();
       this.toastr.warning('veuillez vous reconnectez','Votre Mot de pqsse a ete modifie avec success', {
         timeOut: 1500,
         positionClass: 'toast-top-right',
       });
       this.logout();
-      console.log(data);
+      this.router.navigateByUrl("/").then(() => {
+        window.location.reload();
+      });
     });
 
   }
 
   logout(){
     this.tokenService.signOut();
-    this.router.navigateByUrl('/');
   }
 
 

@@ -27,7 +27,7 @@
 
 <!-- Page Header Start -->
 <div class="container-fluid bg-secondary mb-5">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
         <h4 class="font-weight-semi-bold text-uppercase mb-3">Vos Commandes</h4>
         <div class="d-inline-flex">
             <p class="m-0"><a routerLink="/">Accueil</a></p>
@@ -80,7 +80,7 @@
                                         <td> {{ comDTO.status }} </td>
                                         <td> {{ comDTO.dateCommande | date:'dd-MM-yyyy' }} </td>
                                         <td>
-                                            <button class="btn" (click)="viewCommande(comDTO)"><i class="fa fa-file-pdf" aria-hidden="true">  </i></button></td>
+                                            <a class="btn btn-danger" (click)="viewInvoice(comDTO)"><i class="fa fa-file-pdf" aria-hidden="true">  </i></a></td>
                                     </tr>
 
                                 </tbody>
@@ -105,21 +105,24 @@
                                         <th>Price</th>
                                         <th>Quantité</th>
                                         <th>Total</th>
-                                        <!--  <th>Status</th>-->
+                                        <th>Status</th>
                                         <th>Date</th>
-                                        <th>Action</th>
+                                        <!--  <th>Action</th> -->
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let comDTO of listCommandeDataDTO; let i = index; ">
                                     <!-- <tr *ngFor="let comDTO of this.lcmdService.listData | paginate: {itemsPerPage: 10, currentPage: p}; let i = index;"> -->
-                                    <tr *ngFor="let lcomDTO of comDTO.lcomms | paginate: {itemsPerPage: 8, currentPage: p}; let i = index;">
+                                    <tr *ngFor="let lcomDTO of comDTO.lcomms | paginate: {itemsPerPage: 10, currentPage: p}; let i = index;">
                                         <td> {{ comDTO.numeroCommande }} </td>
                                         <td> {{ lcomDTO.productName }} </td>
                                         <td> {{ lcomDTO.price }} </td>
                                         <td> {{ lcomDTO.quantity }} </td>
                                         <td> {{ lcomDTO.price * lcomDTO.quantity }} </td>
+                                        <td> {{ comDTO.status }} </td>
                                         <td> {{ comDTO.dateCommande | date:'dd-MM-yyyy' }} </td>
-                                        <td><button class="btn">Voir</button></td>
+                                        <!--  <td>
+                                            <a class="btn btn-warning" (click)="viewCommande(comDTO)"> <i class="fa fa-eye"></i> </a>
+                                        </td> -->
                                     </tr>
 
                                 </tbody>

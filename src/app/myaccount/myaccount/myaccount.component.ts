@@ -84,16 +84,10 @@ export class MyaccountComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenService.getUser();
       this.roles = user.roles;
-
       this.username = user.username;
       this.userId = user.id;
-
       this.currentUser = this.authService.getCurrentUser();
-
-      console.log(this.authService.getCurrentUser());
-
       const loginUser = this.authService.getCurrentLogginUser();
-      console.log("Current user " + loginUser);
     }
 
   }
@@ -101,7 +95,6 @@ export class MyaccountComponent implements OnInit {
   getCommandeDTOByUserId(id: number) {
     this.crudApi.getCommandeDtoByUserIdOrderDesc(id).subscribe(
       (response: CommandeDto[]) => {
-        console.log('data--', response);
         this.listCommandeDataDTO = response;
       },
       (error: HttpErrorResponse) => {
@@ -111,10 +104,8 @@ export class MyaccountComponent implements OnInit {
   }
 
   getUtilisateurDTOById(id: number) {
-    console.log('getOne');
     this.userService.getUtilisateurDtoById(id).subscribe(
       (response: UtilisateurDto) => {
-        console.log('data--', response);
         this.listDataProfil = response;
       },
       (error: HttpErrorResponse) => {
@@ -135,9 +126,6 @@ export class MyaccountComponent implements OnInit {
         this.customerUsername = this.listDataProfil.username;
         this.customerEmail = this.listDataProfil.email;
         this.customerMobile = this.listDataProfil.mobile;
-        console.log(this.listDataProfil.name);
-        console.log(this.listDataProfil.username);
-        console.log(this.listDataProfil.email);
       }
     );
   }
@@ -165,7 +153,6 @@ export class MyaccountComponent implements OnInit {
 
   addEditCustomerPassword(item : UtilisateurDto) {
     this.authService.choixmenu == 'M';
-  //  this.authService.listData = Object.assign({},item);
     this.authService.dataForm = this.fb.group(Object.assign({},item));
     this.router.navigate(['/account/my-account/'+this.userId+'/update-password', this.authService.dataForm]);
   }
@@ -188,15 +175,25 @@ export class MyaccountComponent implements OnInit {
       }
 
     );
+  } 
+
+  viewInvoice(item: CommandeDto) {
+    this.router.navigateByUrl('account/facture/' + item.id);
   }
 
   viewCommande(item: CommandeDto) {
-    this.router.navigateByUrl('account/facture/' + item.id);
+    this.router.navigateByUrl('account/my-account/' + item.id);
   }
 
   logout(){
     this.tokenService.signOut();
-    this.router.navigateByUrl('/');
+    this.toastr.success('au revoir','Vous etes deconnecter', {
+      timeOut: 800,
+      positionClass: 'toast-top-right',
+    });
+    this.router.navigateByUrl("/").then(() => {
+      window.location.reload();
+    });
   }
 
 
