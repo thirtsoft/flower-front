@@ -21,6 +21,7 @@ import { SuccessEmailComponent } from './success-email/success-email.component';
 import { TermesComponent } from './termes/termes.component';
 import { PayementComponent } from './payement/payement.component';
 import { CommanderComponent } from './commander/commander.component';
+import { LivraisonComponent } from './livraison/livraison.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { CommanderComponent } from './commander/commander.component';
     TermesComponent,
     PayementComponent,
     CommanderComponent,
+    LivraisonComponent,
   ],
   imports: [
     CommonModule,

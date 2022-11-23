@@ -23,10 +23,6 @@ export class AuthService {
 
   public apiServerUrl = environment.apiBaseUrl;
 
-  public loginUrl = 'http://localhost:8081/flowers/v1/auth/authenticated';
-
-  public baseUrl_1 = 'http://localhost:8081/flowers/v1';
-
   public choixmenu : string  = 'A';
   public dataForm!: FormGroup;
 //  listData: ProfilInfo;
@@ -49,7 +45,7 @@ export class AuthService {
   }
 
   signUp(info: Register): Observable<Register> {
-    return this.http.post<Register>(AUTH_API + 'auth/signUp', info , httpOptions);
+    return this.http.post<Register>(`${this.apiServerUrl}/auth/signUp`, info , httpOptions);
   }
 
   attemptAuth(credentials:any): Observable<any> {
@@ -57,12 +53,12 @@ export class AuthService {
       username: credentials.username,
       password: credentials.password
     };
-    return this.http.post(AUTH_API + 'auth/authenticated', loginData, httpOptions);
+    return this.http.post(`${this.apiServerUrl}/auth/authenticated`, loginData, httpOptions);
     this.islogin=true;
   }
 
   getCurrentUser(){
-    return this.http.get(AUTH_API + '/auth/currentUser');
+    return this.http.get(`${this.apiServerUrl}/auth/currentUser`);
   }
 
   getCurrentLogginUser(){
@@ -79,10 +75,10 @@ export class AuthService {
   } */
 
   getUserByUsername(username: string): Observable<any> {
-    return this.http.get<any>(this.baseUrl_1 + `/getUserByUsername/${username}`);
+    return this.http.get<any>(`${this.apiServerUrl}/utilisateurs/authenticated/getUserByUsername/${username}`);
   }
   getUserById(id: any) {
-    return this.http.get(`${this.baseUrl_1}/utilisateurs/${id}`);
+    return this.http.get(`${this.apiServerUrl}/utilisateurs/${id}`);
   }
 
   public updateProfil(userId: number, userDTO: UpdateProfilInfo): Observable<UpdateProfilInfo> {
@@ -90,7 +86,7 @@ export class AuthService {
   }
 
   updateCustomerProfil(item: UpdateProfilInfo): Observable<UpdateProfilInfo> {
-    const urlUpdateUserProfile = (`${this.baseUrl_1}/utilisateurs/updateCustomerProfileByUsername/`);
+    const urlUpdateUserProfile = (`${this.apiServerUrl}/utilisateurs/updateCustomerProfileByUsername/`);
     return this.http.patch<UpdateProfilInfo>(urlUpdateUserProfile, {
       id: item.id,
       oldUsername: item.oldUsername,
@@ -104,7 +100,7 @@ export class AuthService {
 
 
   updateUsername(item: UpdateUsernameInfo): Observable<UpdateUsernameInfo> {
-    const urlUpdateUsername = (`${this.baseUrl_1}/utilisateurs/updateUsernameOfUserByUsername`);
+    const urlUpdateUsername = (`${this.apiServerUrl}/utilisateurs/updateUsernameOfUserByUsername`);
   //  return this.http.patch<UpdateUsernameInfo>("//localhost:8081/alAmine/updateUsername", {
     return this.http.patch<UpdateUsernameInfo>(urlUpdateUsername, {
       username: item.username,
@@ -114,7 +110,7 @@ export class AuthService {
   }
 
   updateUsernameByUserId(item: UpdateUsernameUser): Observable<UpdateUsernameUser> {
-    const urlUpdateUsername = (`${this.baseUrl_1}/utilisateurs/updateUsernameOfUserById`);
+    const urlUpdateUsername = (`${this.apiServerUrl}/utilisateurs/updateUsernameOfUserById`);
     return this.http.patch<UpdateUsernameUser>(urlUpdateUsername, {
       id: item.id,
       newUsername: item.newUsername
@@ -123,7 +119,7 @@ export class AuthService {
   }
 
   updatePassword(item: UpdatePasswordInfo): Observable<UpdatePasswordInfo> {
-    const urlUpdatePassword = (`${this.baseUrl_1}/utilisateurs/updatePasswordByUsername`);
+    const urlUpdatePassword = (`${this.apiServerUrl}/utilisateurs/updatePasswordByUsername`);
     return this.http.patch<UpdatePasswordInfo>(urlUpdatePassword, {
       username: item.username,
       oldPassword: item.oldPassword,
@@ -132,7 +128,7 @@ export class AuthService {
   }
 
   updatePasswordByUserId(item: UpdatePasswordUser): Observable<UpdatePasswordUser> {
-    const urlUpdatePassword = (`${this.baseUrl_1}/utilisateurs/updatePasswordByUserId`);
+    const urlUpdatePassword = (`${this.apiServerUrl}/utilisateurs/updatePasswordByUserId`);
     return this.http.patch<UpdatePasswordUser>(urlUpdatePassword, {
       userId: item.id,
       oldPassword: item.oldPassword,
