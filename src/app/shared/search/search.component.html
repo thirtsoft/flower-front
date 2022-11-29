@@ -1,9 +1,9 @@
 <form action="">
     <div class="input-group">
-        <input type="text" class="form-control" #searchInput (keyup.enter)="searchProduct(searchInput.value)" placeholder="Search for products">
+        <input type="text" class="form-control" #searchInput (keyup.enter)="searchProduct(searchInput.value)" placeholder="Cherchez un produit, une catégorie">
         <div class="input-group-append">
-            <span (click)="searchProduct(searchInput.value)" class="input-group-text bg-transparent text-primary">
-                    <i class="fa fa-search"></i>
+            <span (click)="searchProduct(searchInput.value)" class="input-group-text bg-transparent text-primary" style="cursor: pointer;">
+                   <!--  <i class="fa fa-search"></i> --> RECHERCHER
                 </span>
         </div>
     </div>

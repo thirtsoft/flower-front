@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SubCategoryService } from 'src/app/services/sub-category.service';
 import { SubCategoryDto } from 'src/app/models/sub-category';
+import { CategoryDto } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-sidebar-category',
@@ -11,19 +13,20 @@ import { SubCategoryDto } from 'src/app/models/sub-category';
 export class SidebarCategoryComponent implements OnInit {
 
   subCategoriesListDTOs!: SubCategoryDto[];
+  categoriesListDTOs!: CategoryDto[];
 
-  constructor(public subCatService: SubCategoryService
+  constructor(public catService: CategoryService
   ){}
 
   ngOnInit(): void {
-    this.getListOfSubCategorieDTOs();
+    this.getListOfCategoriesDTOs();
   }
 
-  getListOfSubCategorieDTOs() {
-    this.subCatService.getAllSubCategoryDtos()
+  getListOfCategoriesDTOs() {
+    this.catService.getCategorieDTOs()
       .subscribe(
-      (response: SubCategoryDto[]) => {
-        this.subCategoriesListDTOs = response;
+      (response: CategoryDto[]) => {
+        this.categoriesListDTOs = response;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

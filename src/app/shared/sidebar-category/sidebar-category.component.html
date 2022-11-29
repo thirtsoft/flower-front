@@ -1,3 +1,3 @@
-<div class="navbar-nav overflow-hidden" *ngFor="let scatDTO of subCategoriesListDTOs; let i = index;">
-    <a [routerLink]="['/shop/category', scatDTO.id]" class="nav-item nav-link">{{scatDTO.subCategoryName}}</a>
+<div class="navbar-nav overflow-hidden" *ngFor="let catDTO of categoriesListDTOs; let i = index;">
+    <a [routerLink]="['/shop/catalogues']" class="nav-item nav-link">{{catDTO.categoryName}}</a>
 </div>

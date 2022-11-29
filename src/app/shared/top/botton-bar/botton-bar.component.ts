@@ -16,7 +16,6 @@ export class BottonBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateCartStatus();
-
   }
 
   updateCartStatus() {

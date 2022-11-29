@@ -9,8 +9,7 @@
         <div class="navbar-nav mr-auto py-0">
             <a routerLink="/" class="nav-item nav-link active">Accueil</a>
             <a routerLink="/shop/catalogues" class="nav-item nav-link">Boutique</a>
-            <!-- <a routerLink="/single" class="nav-item nav-link">DetailProduit</a> -->
-            <div class="nav-item dropdown">
+            <!--  <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <a routerLink="/shop/cart" class="dropdown-item">Panier</a>
@@ -18,14 +17,10 @@
                     <a routerLink="/pages/about" class="dropdown-item">About</a>
                     <a routerLink="/pages/temes-conditions" class="dropdown-item">Temes & Conditions</a>
                 </div>
-            </div>
+            </div> -->
             <a routerLink="/pages/contact" class="nav-item nav-link">Contact</a>
 
         </div>
-        <!--  <div class="navbar-nav ml-auto py-0">
-            <a routerLink="/auth/login" class="nav-item nav-link">Login</a>
-            <a routerLink="/auth/register" class="nav-item nav-link">Register</a>
-        </div> -->
         <div class="nav-item navbar-nav">
             <div class="nav-item dropdown">
                 <a *ngIf="!this.username" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
@@ -46,7 +41,6 @@
             </div>
 
             <div class="nav-item dropdown">
-
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp; Aide</a>
                 <div class="dropdown-menu rounded-0 m-0" style="width: 100px;">
@@ -56,9 +50,7 @@
                     <a routerLink="/pages/aide-paiement" class="nav-item nav-link" style="cursor:pointer;">
                         Paiement ?</a>
                 </div>
-
             </div>
         </div>
-
     </div>
 </nav>
