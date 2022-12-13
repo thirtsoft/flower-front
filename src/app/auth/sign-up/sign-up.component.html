@@ -44,45 +44,82 @@
         <div class="col-lg-5 mx-auto">
             <div class="contact-form">
                 <div id="success"></div>
-                <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" name="sentMessage" id="contactForm" novalidate="novalidate">
+                <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate="novalidate">
                     <div class="control-group">
                         <label>Nom&Prénom</label>
-                        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Votre Nom" required="required" data-validation-required-message="Entrez votre Nom" />
+                        <input type="text" class="form-control" formControlName="name" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['name']!.errors}" placeholder="Entrez votre Nom complet" />
                         <p class="help-block text-danger"></p>
-                        <div class="alert alert-danger" *ngIf="registrationForm.get('name')!.invalid
+                        <!-- <div class="alert alert-danger" *ngIf="registrationForm.get('name')!.invalid
                             && registrationForm.get('name')!.touched">
                             <div *ngIf="registrationForm.get('name')!.errors!['required']">Votre nom est obligatoire</div>
+                        </div> -->
+                        <div *ngIf="submitted && registrationForm.controls!['name'].errors" class="alert alert-danger">
+                            <div *ngIf="submitted && registrationForm.controls!['name'].errors!['required']">
+                                Votre nom est obligatoire
+                            </div>
                         </div>
                     </div>
 
                     <div class="control-group">
                         <label>Nom utilisateur *</label>
-                        <input type="text" class="form-control" id="username" formControlName="username" placeholder="Votre nom utilisateur" required="required" data-validation-required-message="Entrez votre Nom utilisateur" />
+                        <input type="text" formControlName="username" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['username']!.errors}" class="form-control" placeholder="Entrez votre Nom utilisateur" />
                         <p class="help-block text-danger"></p>
-                        <div class="alert alert-danger" *ngIf="registrationForm.get('username')!.invalid
+                        <!-- <div class="alert alert-danger" *ngIf="registrationForm.get('username')!.invalid
                             && registrationForm.get('username')!.touched">
                             <div *ngIf="registrationForm.get('username')!.errors!['required']">Votre nom utilisateur est obligatoire</div>
+                        </div> -->
+                        <div *ngIf="submitted && registrationForm.controls!['username'].errors" class="alert alert-danger">
+                            <div *ngIf="submitted && registrationForm.controls!['username'].errors!['required']">
+                                Votre nom utilisateur est obligatoire
+                            </div>
                         </div>
                     </div>
 
                     <div class="control-group">
                         <label>E-MAIL *</label>
-                        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Votre Email" required="required" data-validation-required-message="Entrez votre Email" />
+                        <input type="email" formControlName="email" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['email']!.errors}" class="form-control" placeholder="Entrez votre Email" />
                         <p class="help-block text-danger"></p>
-                        <div class="alert alert-danger" *ngIf="registrationForm.get('email')!.invalid
+                        <!--  <div class="alert alert-danger" *ngIf="registrationForm.get('email')!.invalid
                             && registrationForm.get('email')!.touched">
                             <div *ngIf="registrationForm.get('email')!.errors!['required']">Votre email est obligatoire</div>
+                        </div> -->
+                        <div *ngIf="submitted && registrationForm.controls!['email'].errors" class="alert alert-danger">
+                            <div *ngIf="submitted && registrationForm.controls!['email'].errors!['required']">
+                                Votre email est obligatoire
+                            </div>
+                            <div *ngIf="submitted && registrationForm.controls!['email'].errors!['pattern']">
+                                Votre format email est invalide
+                            </div>
                         </div>
                     </div>
 
 
                     <div class="control-group">
                         <label>Password *</label>
-                        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Votre mot de password" required="required" data-validation-required-message="Entrez votre mot de passe" />
+                        <input type="password" formControlName="password" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['password']!.errors}" class="form-control" placeholder="Entrez votre mot de passe" />
                         <p class="help-block text-danger"></p>
-                        <div class="alert alert-danger" *ngIf="registrationForm.get('password')!.invalid
+                        <!-- <div class="alert alert-danger" *ngIf="registrationForm.get('password')!.invalid
                             && registrationForm.get('password')!.touched">
                             <div *ngIf="registrationForm.get('password')!.errors!['required']">Votre mot de password est obligatoire</div>
+                        </div> -->
+                        <div *ngIf="submitted && registrationForm.controls!['password'].errors" class="alert alert-danger">
+                            <div *ngIf="submitted && registrationForm.controls!['password'].errors!['required']">
+                                Votre mot de passe est obligatoire
+                            </div>
+                            <div *ngIf="submitted && registrationForm.controls!['password'].errors!['minlength']">
+                                Votre mot Password doit contenir au moins 8 caractères
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" formControlName="isChecked" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['isChecked'].errors}" /> &nbsp;
+                        <label class="text-color:red;">Accepter les conditionds d'utilisations *</label>
+                        <div *ngIf="submitted && registrationForm.controls!['isChecked'].errors" class="alert alert-danger">
+                            <div *ngIf="submitted && registrationForm.controls!['isChecked'].errors!['required']">
+                                Veuillez accepter les conditions
+                            </div>
+
                         </div>
                     </div>
 

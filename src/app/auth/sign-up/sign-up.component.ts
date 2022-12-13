@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 import { Register } from '../services/register';
@@ -27,17 +27,31 @@ export class SignUpComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private toastr: ToastrService,
+              private fb: FormBuilder,
               private router : Router
   ){}
 
   ngOnInit(): void {
-    this.registrationForm = new FormGroup({
-      name: new FormControl(null, [Validators.required]),
-      username: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required]),
+    this.registrationForm = this.fb.group({
+      name: ['', Validators.required],
+      username: ['', Validators.required],
+      email: ['',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
+        ]
+      ],
+      password: ['',
+        [
+          Validators.required,
+          Validators.minLength(8)
+        ]
+      ],
+      isChecked: ['', Validators.required],
       roleSelection: this.createRoles(this.roles),
     });
+
   }
   
   createRoles(rolesList:any): FormArray {
@@ -50,29 +64,34 @@ export class SignUpComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.user.name = this.registrationForm.value.name;
-    this.user.username = this.registrationForm.value.username;
-    this.user.email = this.registrationForm.value.email;
-    this.user.password = this.registrationForm.value.password;
-    console.log("SelectedRole: " +this.getSelectedRoles());
-    this.user.roles = this.getSelectedRoles();
-    this.registerUser();
+    if (this.registrationForm.invalid) {
+      return;
+    }else {
+      this.user.name = this.registrationForm.value.name;
+      this.user.username = this.registrationForm.value.username;
+      this.user.email = this.registrationForm.value.email;
+      this.user.password = this.registrationForm.value.password;
+      console.log("SelectedRole: " +this.getSelectedRoles());
+      this.user.roles = this.getSelectedRoles();
+      this.registerUser();
+    }
   }
 
   registerUser() {
-    console.log(this.user);
     this.authService.signUp(this.user)
     .subscribe(response=> {
-      console.log(response);
       this.isRegistered = true;
       this.isSignUpFailed = false;
-      console.log("User register Succeffuly");
-      this.toastr.warning("Compte créer avec succès");
-      this.router.navigateByUrl("/auth/success-register");
+      this.toastr.success('avec succès','Vote compte est crée', {
+        timeOut: 1500,
+        positionClass: 'toast-top-right',
+      });
+      this.router.navigateByUrl("auth/success-register");
     },
     error => {
       this.errorMessage = error.error.message;
       this.isSignUpFailed = true;
+      this.toastr.error("Aucun compte crée veuillez rééssayer encore");
     }
     );
 
