@@ -29,16 +29,14 @@ export class SignInComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
-      console.log("Login start : " + this.roles);
     }
   }
 
   onSubmit() {
-    console.log(this.form);
     this.loginInfo = new Login(
       this.form.username,
       this.form.password,
-      );
+    );
 
     this.authService.attemptAuth(this.loginInfo).subscribe(data => {
         this.tokenStorage.saveToken(data.accessToken);
@@ -48,18 +46,13 @@ export class SignInComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        console.log(this.roles);
-        this.router.navigateByUrl("/");
-
-        /*
-        this.router.navigateByUrl("").then(() => {
-          window.location.reload();
+        this.toastr.success('bien connecté','Vous etes', {
+          timeOut: 1500,
+          positionClass: 'toast-top-right',
         });
-        */
-
+        this.router.navigateByUrl("/");
       },
       error => {
-        console.log(error);
         this.errorMessage = error.error.message;
         this.isLoginFailed = true;
         this.toastr.error('de connexion','Veuillez verifer vos identifiant', {
