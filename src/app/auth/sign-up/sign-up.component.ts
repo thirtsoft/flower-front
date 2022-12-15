@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
         [
           Validators.required,
           Validators.email,
-          Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ]
       ],
       password: ['',
