@@ -49,10 +49,6 @@
                         <label>Nom&Prénom</label>
                         <input type="text" class="form-control" formControlName="name" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['name']!.errors}" placeholder="Entrez votre Nom complet" />
                         <p class="help-block text-danger"></p>
-                        <!-- <div class="alert alert-danger" *ngIf="registrationForm.get('name')!.invalid
-                            && registrationForm.get('name')!.touched">
-                            <div *ngIf="registrationForm.get('name')!.errors!['required']">Votre nom est obligatoire</div>
-                        </div> -->
                         <div *ngIf="submitted && registrationForm.controls!['name'].errors" class="alert alert-danger">
                             <div *ngIf="submitted && registrationForm.controls!['name'].errors!['required']">
                                 Votre nom est obligatoire
@@ -64,10 +60,6 @@
                         <label>Nom utilisateur *</label>
                         <input type="text" formControlName="username" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['username']!.errors}" class="form-control" placeholder="Entrez votre Nom utilisateur" />
                         <p class="help-block text-danger"></p>
-                        <!-- <div class="alert alert-danger" *ngIf="registrationForm.get('username')!.invalid
-                            && registrationForm.get('username')!.touched">
-                            <div *ngIf="registrationForm.get('username')!.errors!['required']">Votre nom utilisateur est obligatoire</div>
-                        </div> -->
                         <div *ngIf="submitted && registrationForm.controls!['username'].errors" class="alert alert-danger">
                             <div *ngIf="submitted && registrationForm.controls!['username'].errors!['required']">
                                 Votre nom utilisateur est obligatoire
@@ -79,10 +71,6 @@
                         <label>E-MAIL *</label>
                         <input type="email" formControlName="email" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['email']!.errors}" class="form-control" placeholder="Entrez votre Email" />
                         <p class="help-block text-danger"></p>
-                        <!--  <div class="alert alert-danger" *ngIf="registrationForm.get('email')!.invalid
-                            && registrationForm.get('email')!.touched">
-                            <div *ngIf="registrationForm.get('email')!.errors!['required']">Votre email est obligatoire</div>
-                        </div> -->
                         <div *ngIf="submitted && registrationForm.controls!['email'].errors" class="alert alert-danger">
                             <div *ngIf="submitted && registrationForm.controls!['email'].errors!['required']">
                                 Votre email est obligatoire
@@ -98,10 +86,6 @@
                         <label>Password *</label>
                         <input type="password" formControlName="password" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['password']!.errors}" class="form-control" placeholder="Entrez votre mot de passe" />
                         <p class="help-block text-danger"></p>
-                        <!-- <div class="alert alert-danger" *ngIf="registrationForm.get('password')!.invalid
-                            && registrationForm.get('password')!.touched">
-                            <div *ngIf="registrationForm.get('password')!.errors!['required']">Votre mot de password est obligatoire</div>
-                        </div> -->
                         <div *ngIf="submitted && registrationForm.controls!['password'].errors" class="alert alert-danger">
                             <div *ngIf="submitted && registrationForm.controls!['password'].errors!['required']">
                                 Votre mot de passe est obligatoire

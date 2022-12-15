@@ -49,20 +49,35 @@
                     <h4 class="font-weight-semi-bold mb-4">Information Personnels</h4>
                     <div class="row" formGroupName="customer">
                         <div class="col-md-6 form-group">
-                            <label>Prénom</label>
-                            <input type="text" class="form-control" formControlName="firstName" placeholder="Votre prénom" required>
+                            <label>Prénom *</label>
+                            <input type="text" formControlName="firstName" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['firstName']!.errors}" class="form-control" placeholder="Votre prénom" required>
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['firstName'].errors" class="alert alert-danger">
+                                <div *ngIf="submitted && checkoutFormGroup.controls!['firstName'].errors!['required']">
+                                    Le prénom est obligatoire
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Nom</label>
-                            <input class="form-control" type="text" formControlName="lastName" type="text" placeholder="Votre nom">
+                            <label>Nom *</label>
+                            <input type="text" formControlName="lastName" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['lastName']!.errors}" class="form-control" placeholder="Votre nom">
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['lastName'].errors" class="alert alert-danger">
+                                <div *ngIf="submitted && checkoutFormGroup.controls!['lastName'].errors!['required']">
+                                    Le nom est obligatoire
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>
-                            <input class="form-control" type="text" formControlName="email" placeholder="example@email.com">
+                            <input class="form-control" type="email" formControlName="email" placeholder="example@email.com">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Mobile No</label>
-                            <input class="form-control" type="text" formControlName="mobile" placeholder="77 456 78 90">
+                            <label>Mobile No *</label>
+                            <input type="text" formControlName="mobile" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['mobile']!.errors}" class="form-control" placeholder="77 456 78 90">
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['mobile'].errors" class="alert alert-danger">
+                                <div *ngIf="submitted && checkoutFormGroup.controls!['mobile'].errors!['required']">
+                                    Le numéro de téléphone est obligatoire
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -76,27 +91,42 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Quartier</label>
-                            <input class="form-control" type="text" formControlName="city" placeholder="Quartier">
+                            <input type="text" formControlName="city" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['city']!.errors}" class="form-control" placeholder="Quartier">
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['city'].errors" class="alert alert-danger">
+                                <div *ngIf="submitted && checkoutFormGroup.controls!['city'].errors!['required']">
+                                    Le nom du quartier est obligatoire
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-6 form-group">
                             <label>Région</label>
-                            <select class="custom-select" formControlName="country" (change)="getStates('shippingAddress')">
-                                    <option selected>Choisir Région</option>
-                                    <option 
-                                        *ngFor="let country of listCountryDto"
-                                        [ngValue]="country">{{ country.name }}</option>
-                                </select>
+                            <select formControlName="country" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['country']!.errors}" class="custom-select" (change)="getStates('shippingAddress')">
+                                <option selected>Choisir Région</option>
+                                <option 
+                                    *ngFor="let country of listCountryDto"
+                                    [ngValue]="country">{{ country.name }}</option>
+                            </select>
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['country'].errors" class="alert alert-danger">
+                                <div *ngIf="submitted && checkoutFormGroup.controls!['country'].errors!['required']">
+                                    Le choix de la région est obligatoire
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-6 form-group">
                             <label>Département</label>
-                            <select class="custom-select" formControlName="state">
-                                    <option selected>Choisir Département</option>
-                                    <option 
+                            <select class="custom-select" formControlName="state" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['state']!.errors}">
+                                <option selected>Choisir Département</option>
+                                <option 
                                     *ngFor="let tempState of shippingAddressStates"
                                     [ngValue]="tempState">{{ tempState.name }}</option>
-                                </select>
+                            </select>
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['state'].errors" class="alert alert-danger">
+                                <div *ngIf="submitted && checkoutFormGroup.controls!['state'].errors!['required']">
+                                    Le choix de la ville est obligatoire
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-6 form-group">
@@ -126,27 +156,41 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Quartier</label>
-                            <input class="form-control" type="text" formControlName="city" placeholder="Quartier">
+                            <input type="text" formControlName="city" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['city']!.errors}" class="form-control" placeholder="Quartier">
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['city'].errors" class="alert alert-danger">
+                                <div *ngIf="submitted && checkoutFormGroup.controls!['city'].errors!['required']">
+                                    Le quartier est obligatoire
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-6 form-group">
                             <label>Région</label>
-                            <select class="custom-select" formControlName="country" (change)="getStates('billingAddress')">
-                                    <option selected>Choisir région</option>
-                                    <option *ngFor="let country of listCountryDto"
+                            <select formControlName="country" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['country']!.errors}" class="custom-select" (change)="getStates('billingAddress')">
+                                <option selected>Choisir région</option>
+                                <option *ngFor="let country of listCountryDto"
                                     [ngValue]="country">{{ country.name }}</option>
                                  
-                                </select>
+                            </select>
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['country'].errors" class="alert alert-danger">
+                                <div *ngIf="submitted && checkoutFormGroup.controls!['country'].errors!['required']">
+                                    Le choix de la région est obligatoire
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-6 form-group">
                             <label>Département</label>
-                            <select class="custom-select" formControlName="state">
-                                    <option selected>Choisir départment</option>
-                                    <option *ngFor="let tempState of billingAddressStates"
+                            <select class="custom-select" formControlName="state" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['state']!.errors}">
+                                <option selected>Choisir départment</option>
+                                <option *ngFor="let tempState of billingAddressStates"
                                     [ngValue]="tempState">{{ tempState.name }}</option>
-                                 
-                                </select>
+                            </select>
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['state'].errors" class="alert alert-danger">
+                                <div *ngIf="submitted && checkoutFormGroup.controls!['state'].errors!['required']">
+                                    Le choix de la ville est obligatoire
+                                </div>
+                            </div>
                         </div>
 
 

@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { TokenStorageService } from 'src/app/auth/services/token-storage.service';
 import { CartItem } from 'src/app/models/cart-item';
 import { Commande } from 'src/app/models/commande';
@@ -34,6 +35,7 @@ export class CheckoutComponent implements OnInit {
 
   checkoutFormGroup!: FormGroup;
   formData!: FormGroup;
+  submitted = false;
 
   idUser: any;
 
@@ -52,6 +54,7 @@ export class CheckoutComponent implements OnInit {
               private countService: CountryService,
               private checkoutService: CheckoutService,
               private statService: StateService,
+              private toastr: ToastrService,
               private router: Router,
               private formBuilder: FormBuilder
   ) { }
@@ -80,25 +83,46 @@ export class CheckoutComponent implements OnInit {
   initForm() {
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
+        /*
         firstName: [''],
         lastName: [''],
         mobile: [''],
         email: ['']
+        */
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        mobile: ['', Validators.required],
+        email: [''],
       }),
 
       shippingAddress: this.formBuilder.group({
+       /*
         rue: [''],
         city: [''],
         state: [''],
         country: [''],
         zipcode: ['']
+        */
+
+        rue: [''],
+        city: ['', Validators.required],
+        state: ['', Validators.required],
+        country: ['', Validators.required],
+        zipcode: ['']
       }),
 
       billingAddress: this.formBuilder.group({
+  /*
         rue: [''],
         city: [''],
         state: [''],
         country: [''],
+        zipcode: ['']
+*/
+        rue: [''],
+        city: ['', Validators.required],
+        state: ['', Validators.required],
+        country: ['', Validators.required],
         zipcode: ['']
       }),
 
@@ -148,76 +172,87 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.checkoutFormGroup.get('customer')!.value);
-    console.log("Emial is", this.checkoutFormGroup.get('customer')!.value.email);
-    console.log("Checkout Value are", this.checkoutFormGroup.value);
+    this.submitted = true;
+    if (this.checkoutFormGroup.invalid) {
+      return;
+    }else {
+      console.log(this.checkoutFormGroup.get('customer')!.value);
+      console.log("Emial is", this.checkoutFormGroup.get('customer')!.value.email);
+      console.log("Checkout Value are", this.checkoutFormGroup.value);
 
-    let commande = new Commande();
-    commande.totalCommande = this.totalPrice;
-    commande.totalQuantity = this.totalQuantity;
+      let commande = new Commande();
+      commande.totalCommande = this.totalPrice;
+      commande.totalQuantity = this.totalQuantity;
 
-    console.log("User " + this.catalogueService.id);
-    console.log("Username " + this.catalogueService.username);
-    console.log("Current User " + this.catalogueService.currentUser);
-    console.log(commande.totalCommande);
-    console.log(commande.totalQuantity);
+      console.log("User " + this.catalogueService.id);
+      console.log("Username " + this.catalogueService.username);
+      console.log("Current User " + this.catalogueService.currentUser);
+      console.log(commande.totalCommande);
+      console.log(commande.totalQuantity);
 
-    let lcomms: LigneCommande[] = this.cartItems.map(tempCartItem => new LigneCommande(tempCartItem));
+      let lcomms: LigneCommande[] = this.cartItems.map(tempCartItem => new LigneCommande(tempCartItem));
 
-    // setup purchase
-    let purchase = new Purchase();
+      // setup purchase
+      let purchase = new Purchase();
 
-    // populate purchase - customer
-    purchase.client = this.checkoutFormGroup.get('customer')!.value;
+      // populate purchase - customer
+      purchase.client = this.checkoutFormGroup.get('customer')!.value;
 
-    // populate purchase - shippingAddress
-    purchase.shippingAddress = this.checkoutFormGroup.get('shippingAddress')!.value;
-    const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state));
-    console.log(shippingState);
-  //  console.log(purchase.shippingAddress.state.name);
-    console.log(purchase.shippingAddress.state);
-    const shippingCountry: Country = JSON.parse(JSON.stringify(purchase.shippingAddress.country));
-    console.log(shippingCountry);
-    console.log(purchase.shippingAddress.country);
-    purchase.shippingAddress.state.name = shippingState.name;
-  //  purchase.shippingAddress.state.name = shippingState.name;
-    purchase.shippingAddress.country = shippingCountry.name;
+      // populate purchase - shippingAddress
+      purchase.shippingAddress = this.checkoutFormGroup.get('shippingAddress')!.value;
+      const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state));
+      console.log(shippingState);
+      //  console.log(purchase.shippingAddress.state.name);
+      console.log(purchase.shippingAddress.state);
+      const shippingCountry: Country = JSON.parse(JSON.stringify(purchase.shippingAddress.country));
+      console.log(shippingCountry);
+      console.log(purchase.shippingAddress.country);
+      purchase.shippingAddress.state.name = shippingState.name;
+      //  purchase.shippingAddress.state.name = shippingState.name;
+      purchase.shippingAddress.country = shippingCountry.name;
 
-     // populate purchase - billingAddress
-     purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
-     const billingState: StateDto = JSON.parse(JSON.stringify(purchase.billingAddress.state));
-     const billingCountry: CountryDto = JSON.parse(JSON.stringify(purchase.billingAddress.country));
-  //   purchase.billingAddress.state.name = billingState.name;
-     purchase.billingAddress.state.name = billingState.name;
-     purchase.billingAddress.country = billingCountry.name;
+      // populate purchase - billingAddress
+      purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
+      const billingState: StateDto = JSON.parse(JSON.stringify(purchase.billingAddress.state));
+      const billingCountry: CountryDto = JSON.parse(JSON.stringify(purchase.billingAddress.country));
+      //   purchase.billingAddress.state.name = billingState.name;
+      purchase.billingAddress.state.name = billingState.name;
+       purchase.billingAddress.country = billingCountry.name;
 
-     // populate purchase - order and orderItems
+      // populate purchase - order and orderItems
 
-    purchase.commande = commande;
-    purchase.lcomms = lcomms;
+      purchase.commande = commande;
+      purchase.lcomms = lcomms;
 
-    console.log("Purchase is", purchase);
+      console.log("Purchase is", purchase);
 
       // call REST API via checkoutService
 
-    console.log("Conected user is", this.checkoutService.id);
+      console.log("Conected user is", this.checkoutService.id);
 
+      //  this.checkoutService.placeToOrder(purchase).subscribe(
 
-  //  this.checkoutService.placeToOrder(purchase).subscribe(
-
-    this.checkoutService.placeToOrderWithUser(purchase, this.checkoutService.id).subscribe(
-      data =>{
-         alert(`Nous avons bien reçu votre commande.\n order tracking number: ${data.orderTrackingNumber}`);
-      //    reset checkout form
-         this.resetCart();
-         console.log("Response is", data);
-         this.router.navigateByUrl("/shop/success-order");
-      },
-      error=>{
-        alert(`there was a error: ${error.message}`);
-      }
-    )
-
+      this.checkoutService.placeToOrderWithUser(purchase, this.checkoutService.id)
+          .subscribe(
+            (data:any) =>{
+              this.toastr.success('votre commande','Nous avons bien reçu', {
+                timeOut: 1500,
+                positionClass: 'toast-top-right',
+              });
+              alert(`Votre numero de commande.\n order tracking number: ${data.orderTrackingNumber}`);
+              // reset checkout form
+              this.resetCart();
+              this.router.navigateByUrl("/shop/success-order");
+            },
+            error=>{
+              alert(`there was a error: ${error.message}`);
+              this.toastr.error('valider votre commande','Merci de bien vouloir', {
+                timeOut: 1500,
+                positionClass: 'toast-top-right',
+              });
+            }
+          )
+    }
   }
 
   copyShippingAddressToBillingAddress(event:any) {
