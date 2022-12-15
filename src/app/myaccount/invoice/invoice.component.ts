@@ -18,6 +18,7 @@ import "pdfmake/build/pdfmake"
 const pdfMake = window["pdfMake"];
 pdfMake.vfs = pdfFonts.pdfMake.vfs
 
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-invoice',
@@ -42,7 +43,6 @@ export class InvoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.comId = this.route.snapshot.params['id'];
-    console.log(this.comId);
     this.lcmdService.getLigneCommandeDtosByCommandeId(this.comId).subscribe((data: LigneCommandeDto[]) => {
       this.lcmdService.listData = data;
       this.numeroCommande = this.lcmdService.listData[0].commandeDto.numeroCommande;
@@ -50,7 +50,6 @@ export class InvoiceComponent implements OnInit {
       this.dateCommande = this.lcmdService.listData[0].commandeDto.dateCommande;
       this.client = this.lcmdService.listData[0].commandeDto.clientDto.firstName  + ' ' + this.lcmdService.listData[0].commandeDto.clientDto.lastName;
       this.username = this.lcmdService.listData[0].commandeDto.utilisateurDto.name;
-      console.log("Username: " +this.username);
     }, err => {
       console.log(err);
     })
@@ -68,19 +67,16 @@ export class InvoiceComponent implements OnInit {
   }
 
   OpenPdf() {
- //   const document = this.getDocument();
     const document : any = this.getDocument();
     pdfMake.createPdf(document).open();
   }
 
   PrintPdf() {
-  //  const document = this.getDocument();
-  const document : any = this.getDocument();
+    const document : any = this.getDocument();
     pdfMake.createPdf(document).print();
   }
 
   DownloadPdf() {
-  //  const document = this.getDocument();
     const document: any = this.getDocument();
     pdfMake.createPdf(document).download();
   }
@@ -89,7 +85,7 @@ export class InvoiceComponent implements OnInit {
     return {
       content: [
         {
-          text: 'FLOWER DISTRIBUTION SERVICE',
+          text: 'FLEUR POUR TOUS SERVICE',
           fontSize: 15,
           alignment: 'center',
           color: '#0000ff',
@@ -160,7 +156,8 @@ export class InvoiceComponent implements OnInit {
 
             [
               {
-                text: `Date : ${this.lcmdService.listData[0].commandeDto.dateCommande.toLocaleString()}`,
+            //    text: `Date : ${this.lcmdService.listData[0].commandeDto.dateCommande.toLocaleString()}`,
+                text:'Date ' + moment(this.lcmdService.listData[0].commandeDto.dateCommande).format("MM-DD-YYYY"), 
                 alignment: 'right',
                 margin: [0, 15, 0, 15]
               },

@@ -91,7 +91,13 @@ export class CheckoutComponent implements OnInit {
         */
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
-        mobile: ['', Validators.required],
+  //      mobile: ['', Validators.required],
+        mobile: ['', 
+          [
+            Validators.required, 
+            Validators.pattern("^((\\+91-?)|0)?[0-9]{9}$")
+          ]
+        ],
         email: [''],
       }),
 
