@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartItem } from 'src/app/models/cart-item';
@@ -43,6 +44,10 @@ export class ShopComponent implements OnInit {
   pageLength: number = 12;
   orderSize: number = 0;
 
+  filterKey: string = '';
+  searchKeyWord: string = '';
+  isChecked:any;
+
   constructor(public catalService: CatalogueService,
               private prodService: ProductService,
               private cartService: CartService,
@@ -61,19 +66,19 @@ export class ShopComponent implements OnInit {
     });
   }
 
+  
   getScategoryListDTOs() {
     this.subCat.getAllSubCategoryDtos().subscribe(
       (response: SubCategoryDto[]) => {
         this.subCategoryListDTOs = response;
-        console.log(this.subCategoryListDTOs);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     );
-
   }
 
+ 
   finishOrders(){
     let result1 = this.route.snapshot.paramMap.has('id');
     let result2 = this.route.snapshot.paramMap.has('keyword');
@@ -147,6 +152,17 @@ export class ShopComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+
+  changeCheckboxSelection(event:any, $value:any) {
+    console.log(event.target.checked);
+    console.log(event.target.value);
+    if (event.target.checked) {
+      this.filterKey= $value;
+      this.isChecked = event.target.value;
+    }else{
+      this.filterKey= '';
+    }
   }
 
   /*

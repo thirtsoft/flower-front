@@ -50,13 +50,17 @@
                 <h5 class="font-weight-semi-bold mb-4">Filtrer par catégories</h5>
                 <form>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" checked id="color-all">
-                        <label class="custom-control-label" for="price-all">All Color</label>
+                        <input type="checkbox" checked class="custom-control-input" id="color-all" value="" style="cursor: pointer;">
+                        <label class="custom-control-label" [routerLink]="['/shop/catalogues']" for="color-all">All Items</label>
                         <span class="badge border font-weight-normal">1000</span>
                     </div>
                     <div *ngFor="let subCatDTO of subCategoryListDTOs; let i = index" class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                        <input type="checkbox" class="custom-control-input" id="color-1">
+                        <!-- <input type="checkbox" class="custom-control-input" id="color-1">
                         <label [routerLink]="['/shop/category', subCatDTO.id]" style="cursor: pointer;" class="custom-control-label" for="color-1">{{subCatDTO.subCategoryName}}
+                        </label>
+ -->
+                        <input type="checkbox" [routerLink]="['/shop/category', subCatDTO.id]" class="custom-control-input" value="{{subCatDTO.subCategoryName}}" name="fleur" id="{{subCatDTO.subCategoryName}}" (change)="changeCheckboxSelection($event, 'fleur')">
+                        <label [routerLink]="['/shop/category', subCatDTO.id]" style="cursor: pointer;" class="custom-control-label" for="{{subCatDTO.subCategoryName}}">{{subCatDTO.subCategoryName}}
                         </label>
                         <!--  <span class="badge border font-weight-normal">150</span> -->
                     </div>
