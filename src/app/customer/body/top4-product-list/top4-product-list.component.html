@@ -1,6 +1,6 @@
 <div class="container-fluid pt-5">
     <div class="text-center mb-4">
-        <h2 class="section-title px-5"><span class="px-2">Produits intéressants</span></h2>
+        <h2 class="section-title px-5"><span class="px-2">Produits simulaires</span></h2>
     </div>
     <div class="row px-xl-5 pb-3">
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1" *ngFor="let prodDTO of producttop4ListDTO; let i = index">
@@ -11,8 +11,8 @@
                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                     <h6 class="text-truncate mb-3" style="cursor: pointer;">{{prodDTO.designation}}</h6>
                     <div class="d-flex justify-content-center">
-                        <h6>{{ prodDTO.price }}f</h6>
-                        <h6 class="text-muted ml-2"><del>{{ prodDTO.price }} F</del></h6>
+                        <h6>{{ prodDTO.price }} F</h6>
+                        <!-- <h6 class="text-muted ml-2"><del>{{ prodDTO.price }} F</del></h6> -->
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between bg-light border">

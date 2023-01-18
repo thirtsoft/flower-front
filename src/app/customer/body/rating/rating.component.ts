@@ -69,7 +69,6 @@ export class RatingComponent implements OnInit {
     this.prodService.getProductDtoByReference(this.ref).subscribe(
       response => {
         this.productDTO = response;
-        console.log(this.productDTO);
         }
         ,(error: HttpErrorResponse) => {
       alert(error.message);
@@ -78,9 +77,6 @@ export class RatingComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formData.value);
-    console.log(this.formData.value, this.ref, this.ratService.id);
-    console.log(this.ratService.id);
     this.ratService.addRatingToArticle(this.formData.value, this.ref, this.ratService.id)
       .subscribe(
       (response: RatingDto) => {

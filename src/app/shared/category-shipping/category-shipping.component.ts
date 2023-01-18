@@ -32,19 +32,6 @@ export class CategoryShippingComponent implements OnInit {
     );
   }
 
-  
-  /* getSubCategoriesListDTOs() {
-    this.crupApi.getAllSubCategoryDtos().subscribe(
-      (response: SubCategoryDto[]) => {
-        this.subCategoryListDTOs = response;
-        console.log(this.subCategoryListDTOs);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  } */
-
 
 
 }

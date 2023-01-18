@@ -49,7 +49,6 @@ export class ProductStartComponent implements OnInit {
     this.catalogueService.getListProductBySelectedIsTrue().subscribe(
       (response: ProductDto[]) => {
         this.productListDTOBySelected = response;
-        console.log(this.productListDTOBySelected);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
