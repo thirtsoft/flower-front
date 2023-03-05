@@ -19,6 +19,7 @@ const pdfMake = window["pdfMake"];
 pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 import * as moment from 'moment';
+import { CatalogueService } from 'src/app/services/catalogue.service';
 
 @Component({
   selector: 'app-invoice',
@@ -35,10 +36,11 @@ export class InvoiceComponent implements OnInit {
   client:any;
   username = '';
 
-  constructor(public crudApi: orderservice,
+  constructor(private crudApi: orderservice,
               public lcmdService: orderItemservice,
+              public catalogueService: CatalogueService,
               private router : Router,
-              public route: ActivatedRoute
+              private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -116,8 +118,6 @@ export class InvoiceComponent implements OnInit {
         {
 
         },
-
-
         {
           columns: [
 
@@ -156,7 +156,6 @@ export class InvoiceComponent implements OnInit {
 
             [
               {
-            //    text: `Date : ${this.lcmdService.listData[0].commandeDto.dateCommande.toLocaleString()}`,
                 text:'Date ' + moment(this.lcmdService.listData[0].commandeDto.dateCommande).format("MM-DD-YYYY"), 
                 alignment: 'right',
                 margin: [0, 15, 0, 15]
@@ -188,8 +187,6 @@ export class InvoiceComponent implements OnInit {
                 fontSize: 11,
               },
             ],
-
-
           ]
         },
 
@@ -209,8 +206,6 @@ export class InvoiceComponent implements OnInit {
           color: '#0000ff',
           margin: [0, 8, 0, 8]
         },
-
-
         {
           text: `Achat effectue par :  ${this.lcmdService.listData[0].commandeDto.utilisateurDto.name}`,
           bold: true,
