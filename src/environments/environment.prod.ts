@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
- // apiBaseUrl: 'http://localhost:8081/flowers/v1'
-  apiBaseUrl: 'https://flower-admin.herokuapp.com/flowers/v1'
+  production: true,
+//  apiBaseUrl: 'https://flower-admin.herokuapp.com/flowers/v1',
+  apiBaseUrl: 'https://flowerapi.fleurpourtous.com/flowers/v1'
 };
