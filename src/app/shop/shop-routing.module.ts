@@ -15,6 +15,10 @@ const routes: Routes = [
     component: ShopComponent
   },
   {
+    path: 'category/:subcatName',
+    component: ShopComponent
+  },
+  {
     path: 'searchInshop/:keyword',
     component: ShopComponent
   },

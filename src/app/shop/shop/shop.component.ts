@@ -112,11 +112,17 @@ export class ShopComponent implements OnInit {
         this.orderSize = data
       }
     )
-    this.catalService.getAllProductsByCategoryId(idCategory,this.page-1,this.pageLength).subscribe(
+    this.catalService.getAllProductsByCategoryName(idCategory,this.page-1,this.pageLength).subscribe(
       data => {
         this.products = data
       }
     )
+    /*
+    this.catalService.getAllProductsByCategoryId(idCategory,this.page-1,this.pageLength).subscribe(
+      data => {
+        this.products = data
+      }
+    )*/
   }
 
   getAllOrdersContainingKey(){

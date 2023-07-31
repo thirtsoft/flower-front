@@ -59,8 +59,8 @@
                         <label [routerLink]="['/shop/category', subCatDTO.id]" style="cursor: pointer;" class="custom-control-label" for="color-1">{{subCatDTO.subCategoryName}}
                         </label>
  -->
-                        <input type="checkbox" [routerLink]="['/shop/category', subCatDTO.id]" class="custom-control-input" value="{{subCatDTO.subCategoryName}}" name="fleur" id="{{subCatDTO.subCategoryName}}" (change)="changeCheckboxSelection($event, 'fleur')">
-                        <label [routerLink]="['/shop/category', subCatDTO.id]" style="cursor: pointer;" class="custom-control-label" for="{{subCatDTO.subCategoryName}}">{{subCatDTO.subCategoryName}}
+                        <input type="checkbox" [routerLink]="['/shop/category', subCatDTO.subCategoryName]" class="custom-control-input" value="{{subCatDTO.subCategoryName}}" name="fleur" id="{{subCatDTO.subCategoryName}}" (change)="changeCheckboxSelection($event, 'fleur')">
+                        <label [routerLink]="['/shop/category', subCatDTO.subCategoryName]" style="cursor: pointer;" class="custom-control-label" for="{{subCatDTO.subCategoryName}}">{{subCatDTO.subCategoryName}}
                         </label>
                         <!--  <span class="badge border font-weight-normal">150</span> -->
                     </div>
