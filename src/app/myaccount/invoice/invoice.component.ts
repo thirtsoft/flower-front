@@ -80,7 +80,7 @@ export class InvoiceComponent implements OnInit {
 
   DownloadPdf() {
     const document: any = this.getDocument();
-    pdfMake.createPdf(document).download();
+    pdfMake.createPdf(document).download('"Facture_"'+this.lcmdService.listData[0].commandeDto.numeroCommande+'.pdf');
   }
 
   getDocument() {
@@ -109,7 +109,7 @@ export class InvoiceComponent implements OnInit {
           alignment: 'center',
         },
         {
-          text: 'Tél: +221 77 944 03 10 / Email: support@flower.com',
+          text: 'Tél: +221 77 944 03 10 / Email: support@fleurpourtous.com',
           fontSize: 11,
           bold: true,
           alignment: 'center',

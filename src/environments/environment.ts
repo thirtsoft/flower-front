@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:8081/flowers/v1'
+  apiBaseUrl: 'http://localhost:8081/flowers/v1',
+ // apiBaseUrl: 'https://flowerapi.fleurpourtous.com/flowers/v1'
 };
 
 /*

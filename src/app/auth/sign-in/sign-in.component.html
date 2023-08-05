@@ -46,7 +46,7 @@
                 <div id="success"></div>
                 <form name="sentMessage" id="contactForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate="novalidate">
                     <div class="control-group">
-                        <label>Nom utilisateur *</label>
+                       <!--  <label>Nom utilisateur *</label> -->
                         <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel" required="required" placeholder="Entrez votre Nom utlisateur" />
                         <p class="help-block text-danger"></p>
                         <div *ngIf="f.submitted && username.invalid" class="alert alert-danger">
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="control-group">
-                        <label>Password *</label>
+                       <!--  <label>Password *</label> -->
                         <input type="password" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="8" class="form-control" placeholder="Entrez votre mot de passe" />
                         <p class="help-block text-danger"></p>
                         <div *ngIf="f.submitted && password.invalid">

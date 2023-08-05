@@ -46,7 +46,7 @@
                 <div id="success"></div>
                 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate="novalidate">
                     <div class="control-group">
-                        <label>Nom&Prénom</label>
+                       <!--  <label>Nom&Prénom</label> -->
                         <input type="text" class="form-control" formControlName="name" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['name']!.errors}" placeholder="Entrez votre Nom complet" />
                         <p class="help-block text-danger"></p>
                         <div *ngIf="submitted && registrationForm.controls!['name'].errors" class="alert alert-danger">
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="control-group">
-                        <label>Nom utilisateur *</label>
+                       <!--  <label>Nom utilisateur *</label> -->
                         <input type="text" formControlName="username" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['username']!.errors}" class="form-control" placeholder="Entrez votre Nom utilisateur" />
                         <p class="help-block text-danger"></p>
                         <div *ngIf="submitted && registrationForm.controls!['username'].errors" class="alert alert-danger">
@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="control-group">
-                        <label>E-MAIL *</label>
+                        <!-- <label>E-MAIL *</label> -->
                         <input type="email" formControlName="email" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['email']!.errors}" class="form-control" placeholder="Entrez votre Email" />
                         <p class="help-block text-danger"></p>
                         <div *ngIf="submitted && registrationForm.controls!['email'].errors" class="alert alert-danger">
@@ -83,7 +83,7 @@
 
 
                     <div class="control-group">
-                        <label>Password *</label>
+                        <!-- <label>Password *</label> -->
                         <input type="password" formControlName="password" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['password']!.errors}" class="form-control" placeholder="Entrez votre mot de passe" />
                         <p class="help-block text-danger"></p>
                         <div *ngIf="submitted && registrationForm.controls!['password'].errors" class="alert alert-danger">
