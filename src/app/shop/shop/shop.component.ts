@@ -120,6 +120,7 @@ export class ShopComponent implements OnInit {
         console.log(error);
       }
     )
+    /*
     this.catalService.getAllProductsByCategoryName(idCategory,this.page-1,this.pageLength).subscribe(
       data => {
         this.products = data
@@ -127,13 +128,12 @@ export class ShopComponent implements OnInit {
       (error: HttpErrorResponse) => {
         console.log(error);
       }
-    )
-    /*
+    )*/
     this.catalService.getAllProductsByCategoryId(idCategory,this.page-1,this.pageLength).subscribe(
       data => {
         this.products = data
       }
-    )*/
+    )
   }
 
   getAllOrdersContainingKey(){
