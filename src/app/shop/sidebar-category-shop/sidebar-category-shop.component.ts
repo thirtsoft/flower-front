@@ -26,11 +26,9 @@ export class SidebarCategoryShopComponent implements OnInit {
         this.subCategoriesListDTOs = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
 
   }
-
-
 }

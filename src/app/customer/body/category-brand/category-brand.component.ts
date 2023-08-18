@@ -26,7 +26,7 @@ export class CategoryBrandComponent implements OnInit {
         this.subCategoriesListDTOs = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
 

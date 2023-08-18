@@ -98,7 +98,7 @@ export class MyaccountComponent implements OnInit {
         this.listCommandeDataDTO = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
   }
@@ -109,7 +109,7 @@ export class MyaccountComponent implements OnInit {
         this.listDataProfil = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
 
@@ -171,7 +171,7 @@ export class MyaccountComponent implements OnInit {
         });
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
 
     );

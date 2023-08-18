@@ -213,13 +213,24 @@
                         <h5 class="font-weight-medium mb-3">Articles</h5>
                         <div class="d-flex justify-content-between" *ngFor="let item of cartItems; let i = index">
                             <p>
-                                <img [src]="
+                                <!-- <img [src]="
                             this.catalogueService.apiServerUrl +
                             '/products/photoProductInFolder/' +
                             item.id +
                             '?ts=' +
                             getTS()
+                          " alt="{{item.name}}" style="width: 40px; height: 40px" /> -->
+                          
+                          <img [src]="
+                            this.catalogueService.apiServerUrl +
+                            '/products/photoProduct/' +
+                            item.id +
+                            '?ts=' +
+                            getTS()
                           " alt="{{item.name}}" style="width: 40px; height: 40px" /> {{ item.name }}</p>
+
+                
+
                             <p>{{ item.unitPrice }}f</p>
                         </div>
                         <!-- <div class="d-flex justify-content-between">

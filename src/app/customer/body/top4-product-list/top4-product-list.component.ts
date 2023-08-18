@@ -38,7 +38,7 @@ export class Top4ProductListComponent implements OnInit {
         this.producttop4ListDTO = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
   }

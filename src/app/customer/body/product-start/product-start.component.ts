@@ -51,7 +51,7 @@ export class ProductStartComponent implements OnInit {
         this.productListDTOBySelected = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
 
@@ -62,6 +62,9 @@ export class ProductStartComponent implements OnInit {
     this.catalogueService.getListProductByKeyword(keyword).subscribe(
       data  => {
         this.productListDTOBySelected = data;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
       }
     )
   }

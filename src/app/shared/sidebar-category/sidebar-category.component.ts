@@ -29,10 +29,9 @@ export class SidebarCategoryComponent implements OnInit {
         this.categoriesListDTOs = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
+        console.log(error);
+      }    
     );
-
   }
 
 }

@@ -49,9 +49,7 @@ export class NavbarBodyComponent implements OnInit {
       this.photo = user.photo;
 
       this.currentUser = this.autService.getCurrentUser();
-      console.log(this.autService.getCurrentUser());
       const loginUser = this.autService.getCurrentLogginUser();
-      console.log("Current user " + loginUser);
     }
   }
 

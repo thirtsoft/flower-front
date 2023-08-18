@@ -159,7 +159,7 @@ export class CheckoutComponent implements OnInit {
         console.log(this.listCountryDto);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
   }
@@ -171,7 +171,7 @@ export class CheckoutComponent implements OnInit {
         console.log(this.listStateDto);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
 

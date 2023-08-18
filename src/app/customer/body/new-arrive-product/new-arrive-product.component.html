@@ -7,9 +7,14 @@
             <div class="card product-item border-0 mb-4">
                 <div [routerLink]="['/product-detail', prod.reference]" class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                     <!-- <img class="img-fluid w-100" src="assets/customer/img/product-1.jpg" alt=""> -->
-                    <img class="img-fluid w-100" src="{{
+                    <!-- <img class="img-fluid w-100" src="{{
                             this.catalService.apiServerUrl +
                             '/products/photoProductInFolder/' +
+                            prod.id
+                        }}" alt="{{prod.designation}}" style="cursor: pointer;"> -->
+                        <img class="img-fluid w-100" src="{{
+                            this.catalService.apiServerUrl +
+                            '/products/photoProduct/' +
                             prod.id
                         }}" alt="{{prod.designation}}" style="cursor: pointer;">
                 </div>

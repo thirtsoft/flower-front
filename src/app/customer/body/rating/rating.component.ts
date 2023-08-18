@@ -69,10 +69,11 @@ export class RatingComponent implements OnInit {
     this.prodService.getProductDtoByReference(this.ref).subscribe(
       response => {
         this.productDTO = response;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error);
         }
-        ,(error: HttpErrorResponse) => {
-      alert(error.message);
-    });
+    );
 
   }
 

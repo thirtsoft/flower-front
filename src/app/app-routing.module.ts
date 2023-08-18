@@ -53,7 +53,7 @@ const routes: Routes = [
   ], */
   imports: [
     RouterModule.forRoot(routes,
-      { scrollPositionRestoration: 'enabled' })],
+      { scrollPositionRestoration: 'enabled', useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

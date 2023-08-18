@@ -45,8 +45,10 @@ export class ListRatingComponent implements OnInit {
         this.productData = response;
         console.log(this.productData);
         }
-        ,(error: HttpErrorResponse) => {
-    });
+        , (error: HttpErrorResponse) => {
+          console.log(error);
+        }
+    );
 
   }
 
@@ -57,14 +59,9 @@ export class ListRatingComponent implements OnInit {
         this.ratingListDTOs = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
 
   }
-
-  
-
-
-
 }

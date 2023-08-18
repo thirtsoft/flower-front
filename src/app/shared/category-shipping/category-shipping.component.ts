@@ -27,7 +27,7 @@ export class CategoryShippingComponent implements OnInit {
         this.categoryListDTOs = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
   }

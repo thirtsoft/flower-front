@@ -33,7 +33,7 @@ export class NewArriveProductComponent implements OnInit {
         this.top8NewArrivedproductList = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
   }

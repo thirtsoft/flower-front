@@ -57,13 +57,27 @@
                     <tr *ngFor="let item of cartItems; let i = index">
                         <td class="align-middle">
                             <!-- <img src="assets/customer/img/product-1.jpg" alt="" style="width: 50px;"> -->
-                            <img [src]="
+                           <!--  <img [src]="
                             this.catalogueService.apiServerUrl +
                             '/products/photoProductInFolder/' +
                             item.id +
                             '?ts=' +
                             getTS()
-                          " alt="{{item.name}}" style="width: 60px; height: 60px;" /> &nbsp; {{ item.name }} </td>
+                          " alt="{{item.name}}" style="width: 60px; height: 60px;" /> -->
+                          
+                          <img [src]="
+                            this.catalogueService.apiServerUrl +
+                            '/products/photoProduct/' +
+                            item.id +
+                            '?ts=' +
+                            getTS()
+                          " alt="{{item.name}}" style="width: 60px; height: 60px;" />
+                          &nbsp; {{ item.name }} 
+                        
+                        </td>
+
+                        
+
                         <td class="align-middle">{{ item.unitPrice }} f</td>
                         <td class="align-middle">
                             <div class="input-group quantity mx-auto" style="width: 100px;">

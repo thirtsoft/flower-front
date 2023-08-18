@@ -53,11 +53,10 @@ export class DetailProductComponent implements OnInit {
     this.prodService.getProductDtoByReference(this.ref).subscribe(
       response => {
         this.productData = response;
-        console.log(this.productData);
         }
         ,(error: HttpErrorResponse) => {
-     // alert(error.message);
-    });
+          console.log(error);
+        });
 
   }
 
@@ -67,9 +66,9 @@ export class DetailProductComponent implements OnInit {
         response => {
           this.numberOfRatingToProduct = response;
         }
-        ,(error: HttpErrorResponse) => {
-      alert(error.message);
-    });
+        , (error: HttpErrorResponse) => {
+          console.log(error);
+        });
 
   }
 
@@ -80,7 +79,7 @@ export class DetailProductComponent implements OnInit {
         this.ratingListDTOs = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
 

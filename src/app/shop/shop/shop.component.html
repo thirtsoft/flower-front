@@ -51,7 +51,7 @@
                 <form>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" checked class="custom-control-input" id="color-all" value="" style="cursor: pointer;">
-                        <label class="custom-control-label" [routerLink]="['/shop/catalogues']" for="color-all">All Items</label>
+                        <label class="custom-control-label" [routerLink]="['/shop/catalogues']" for="color-all">Toutes catégories</label>
                         <span class="badge border font-weight-normal">1000</span>
                     </div>
                     <div *ngFor="let subCatDTO of subCategoryListDTOs; let i = index" class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
@@ -82,13 +82,13 @@
                                   Filtrez Par
                                 </option>
                                 <option value="Low" style="cursor: pointer;">
-                                  Price, moins chère au plus chère
+                                  Prix, moins chère au plus chère
                                 </option>
                                 <option value="Name" style="cursor: pointer;">Nom, A à Z</option>
                                 <option value="ZName">Nom, Z à A</option>
                                 
                                 <option value="High" style="cursor: pointer;">
-                                  Price, plus chère au moins chère
+                                    Prix, plus chère au moins chère
                                 </option>
                               </select>
                         </div>
@@ -101,11 +101,18 @@
                                 prod.reference
                                 ]" style="cursor: pointer" class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                             <!-- <img class="img-fluid w-100" src="assets/customer/img/product-1.jpg" alt=""> -->
-                            <img class="img-fluid w-100" src="{{
+                           <!--  <img class="img-fluid w-100" src="{{
                                     this.catalService.apiServerUrl +
                                     '/products/photoProductInFolder/' +
                                     prod.id
-                                    }}" alt="{{ prod.designation }}">
+                                    }}" alt="{{ prod.designation }}"> -->
+
+                                    <img class="img-fluid w-100" src="{{
+                                        this.catalService.apiServerUrl +
+                                        '/products/photoProduct/' +
+                                        prod.id
+                                        }}" alt="{{ prod.designation }}">
+
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">{{ prod.designation }}</h6>

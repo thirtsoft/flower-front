@@ -73,7 +73,7 @@ export class ShopComponent implements OnInit {
         this.subCategoryListDTOs = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
   }
@@ -95,12 +95,17 @@ export class ShopComponent implements OnInit {
     this.catalService.getProductsLength().subscribe(
       data => {
         this.orderSize = data
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
       }
     )
     this.catalService.getAllProductsByPageable(this.page-1,this.pageLength).subscribe(
       data => {
-        this.products = data
-        console.log(data)
+        this.products = data;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
       }
     )
   }
@@ -110,11 +115,17 @@ export class ShopComponent implements OnInit {
     this.catalService.getProductsLengthByCategoryId(idCategory).subscribe(
       data => {
         this.orderSize = data
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
       }
     )
     this.catalService.getAllProductsByCategoryName(idCategory,this.page-1,this.pageLength).subscribe(
       data => {
         this.products = data
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
       }
     )
     /*
@@ -130,11 +141,17 @@ export class ShopComponent implements OnInit {
     this.catalService.getProductsLengthByKeyword(keyWord).subscribe(
       data => {
         this.orderSize = data
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
       }
     )
     this.catalService.getAllProductsByKeyword(keyWord,this.page-1,this.pageLength).subscribe(
       data => {
         this.products = data
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
       }
     )
   }
@@ -155,7 +172,7 @@ export class ShopComponent implements OnInit {
         console.log(this.productListDTOs);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        console.log(error);
       }
     );
   }
