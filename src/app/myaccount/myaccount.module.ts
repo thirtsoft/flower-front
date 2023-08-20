@@ -25,7 +25,7 @@ import { MatInputModule } from '@angular/material/input';
     InvoiceComponent,
     UpdatePasswordComponent,
     UpdateUsernameComponent,
-    UpdateAccountComponent
+    UpdateAccountComponent,
   ],
   imports: [
     CommonModule,

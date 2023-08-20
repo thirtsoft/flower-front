@@ -7,15 +7,16 @@ import { SuccessOrderComponent } from './success-order/success-order.component';
 
 const routes: Routes = [
   {
-    path: 'catalogues',
+    path: 'catalogue',
     component: ShopComponent
   },
+  /*
   {
-    path: 'category/:id',
+    path: 'categorie-de-produit/:id',
     component: ShopComponent
-  },
+  },*/
   {
-    path: 'category/:subcatName',
+    path: 'categorie-de-produit/:subcatName',
     component: ShopComponent
   },
   {

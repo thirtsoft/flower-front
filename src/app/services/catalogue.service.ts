@@ -119,7 +119,7 @@ export class CatalogueService {
   }
 
   public getAllProductsByCategoryName(subCatName: any,page: any,size: any): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchAllProductsBySubCategoryByPageable?subCatName=${subCatName}&page=${page}&size=${size}`).pipe(
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-products-by-subcategory-name-by-pageable?subCatName=${subCatName}&page=${page}&size=${size}`).pipe(
       map(
         response => response
       )
@@ -144,6 +144,14 @@ export class CatalogueService {
 
   public getProductsLengthByCategoryId(id: any): Observable<number> {
     return this.http.get<number>(`${this.apiServerUrl}/products/productSizeBySubCategoryId?id=${id}`).pipe(
+      map(
+        response => response
+      )
+    )
+  }
+
+  public getProductsLengthByCategoryName(subCatName: any): Observable<number> {
+    return this.http.get<number>(`${this.apiServerUrl}/products/product-size-by-subcategory-name?subcatName=${subCatName}`).pipe(
       map(
         response => response
       )

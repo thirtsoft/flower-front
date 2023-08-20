@@ -54,6 +54,6 @@ export class UtilisateurService {
   }
 
   public deleteUtilisateurDto(userId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/utilisateurs/delete/${userId}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/utilisateurs/delete-utilisateur/${userId}`);
   }
 }

@@ -80,7 +80,8 @@ export class ShopComponent implements OnInit {
 
  
   finishOrders(){
-    let result1 = this.route.snapshot.paramMap.has('id');
+  //  let result1 = this.route.snapshot.paramMap.has('id');
+    let result1 = this.route.snapshot.paramMap.has('subcatName');
     let result2 = this.route.snapshot.paramMap.has('keyword');
     if(result1){
       this.getOrderByCategoryId()
@@ -111,29 +112,32 @@ export class ShopComponent implements OnInit {
   }
 
   getOrderByCategoryId(){
-    let idCategory = this.route.snapshot.paramMap.get('id');
-    this.catalService.getProductsLengthByCategoryId(idCategory).subscribe(
+    let idCategory = this.route.snapshot.paramMap.get('subcatName');
+    this.catalService.getProductsLengthByCategoryName(idCategory).subscribe(
       data => {
         this.orderSize = data
+        console.log(data);
       },
       (error: HttpErrorResponse) => {
         console.log(error);
       }
     )
-    /*
+    
     this.catalService.getAllProductsByCategoryName(idCategory,this.page-1,this.pageLength).subscribe(
       data => {
-        this.products = data
+        this.products = data;
+        console.log(data);
       },
       (error: HttpErrorResponse) => {
         console.log(error);
       }
-    )*/
+    )
+/*
     this.catalService.getAllProductsByCategoryId(idCategory,this.page-1,this.pageLength).subscribe(
       data => {
         this.products = data
       }
-    )
+    )*/
   }
 
   getAllOrdersContainingKey(){

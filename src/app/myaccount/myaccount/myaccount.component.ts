@@ -12,6 +12,7 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { UpdateAccountComponent } from '../update-account/update-account.component';
 import { UpdatePasswordComponent } from '../update-password/update-password.component';
 import { FormBuilder } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-myaccount',
@@ -56,6 +57,7 @@ export class MyaccountComponent implements OnInit {
               public toastr: ToastrService,
               public authService: AuthService,
               public userService: UtilisateurService,
+              private modalService: NgbModal,
               public fb: FormBuilder,
               private router: Router,
               public matDialog: MatDialog,
@@ -139,18 +141,6 @@ export class MyaccountComponent implements OnInit {
     this.matDialog.open(UpdateAccountComponent, dialogConfig);
   }
 
-  /*
-  addEditCustomerPassword(item: UtilisateurDto) {
-    console.log(item);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.disableClose = true;
-    dialogConfig.width = "50%";
-    this.authService.listData = Object.assign({}, item);
-    this.matDialog.open(UpdatePasswordComponent, dialogConfig);
-  }
-  */
-
   addEditCustomerPassword(item : UtilisateurDto) {
     this.authService.choixmenu == 'M';
     this.authService.dataForm = this.fb.group(Object.assign({},item));
@@ -196,5 +186,28 @@ export class MyaccountComponent implements OnInit {
     });
   }
 
+  deleteAccount() {
+    this.userService.deleteUtilisateurDto(this.paramId).subscribe(
+      (response) => {
+        this.toastr.success('avec succès','Votre compte a été supprimé', {
+          timeOut: 1500,
+          positionClass: 'toast-top-right',
+        });
+        this.logout();
+      },
+      error => {
+        console.log(error.error.message);
+      }
+    )
+  }
+
+  openDelete(targetModal:any, user: UtilisateurDto) {
+    const deleteId = user.id;
+    console.log(deleteId);
+    this.modalService.open(targetModal, {
+      backdrop: 'static',
+      size: 'lg'
+    });
+  }
 
 }

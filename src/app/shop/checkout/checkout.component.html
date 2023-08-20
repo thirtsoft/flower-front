@@ -28,11 +28,11 @@
 <!-- Page Header Start -->
 <div class="container-fluid bg-secondary mb-3">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px">
-        <h1 class="font-weight-semi-bold text-uppercase mb-3">Checkout</h1>
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Enregistrement</h1>
         <div class="d-inline-flex">
             <p class="m-0"><a routerLink="/">Accueil</a></p>
             <p class="m-0 px-2">-</p>
-            <p class="m-0">Checkout</p>
+            <p class="m-0">Enregistrement</p>
         </div>
     </div>
 </div>
@@ -46,13 +46,13 @@
         <div class="row px-xl-5">
             <div class="col-lg-8">
                 <div class="mb-4">
-                    <h4 class="font-weight-semi-bold mb-4">Information Personnels</h4>
+                    <h4 class="font-weight-semi-bold mb-4">Informations personnelles</h4>
                     <div class="row" formGroupName="customer">
                         <div class="col-md-6 form-group">
                             <label>Prénom *</label>
                             <input type="text" formControlName="firstName" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['firstName']!.errors}" class="form-control" placeholder="Votre prénom" required>
-                            <div *ngIf="submitted && checkoutFormGroup.controls!['firstName'].errors" class="alert alert-danger">
-                                <div *ngIf="submitted && checkoutFormGroup.controls!['firstName'].errors!['required']">
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['customer.firstName'].errors" class="alert alert-danger">
+                                <div *ngIf="submitted && checkoutFormGroup.controls!['customer.firstName'].errors!['required']">
                                     Le prénom est obligatoire
                                 </div>
                             </div>
@@ -60,8 +60,8 @@
                         <div class="col-md-6 form-group">
                             <label>Nom *</label>
                             <input type="text" formControlName="lastName" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.controls!['lastName']!.errors}" class="form-control" placeholder="Votre nom">
-                            <div *ngIf="submitted && checkoutFormGroup.controls!['lastName'].errors" class="alert alert-danger">
-                                <div *ngIf="submitted && checkoutFormGroup.controls!['lastName'].errors!['required']">
+                            <div *ngIf="submitted && checkoutFormGroup.controls!['customer']!controls['lastName'].errors" class="alert alert-danger">
+                                <div *ngIf="checkoutFormGroup.controls!['customer']!controls['lastName'].errors!['required']">
                                     Le nom est obligatoire
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                    <h4 class="font-weight-semi-bold mb-4">Addresse Achat</h4>
+                    <h4 class="font-weight-semi-bold mb-4">Adresse Achat</h4>
                     <div class="row" formGroupName="shippingAddress">
                         <div class="col-md-6 form-group">
                             <label>Rue</label>
@@ -151,7 +151,7 @@
                     </div>
                 </div>
                 <div class="mb-4" id="shipping-address">
-                    <h4 class="font-weight-semi-bold mb-4">Addresse Livraison</h4>
+                    <h4 class="font-weight-semi-bold mb-4">Adresse Livraison</h4>
                     <div class="row" formGroupName="billingAddress">
                         <div class="col-md-6 form-group">
                             <label>Rue</label>
@@ -260,7 +260,7 @@
                 </div>
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Payment</h4>
+                        <h4 class="font-weight-semi-bold m-0">Paiement</h4>
                     </div>
                     <!--  <div class="card-body">
                         <div class="form-group">
