@@ -23,7 +23,7 @@ export class SidebarCategoryComponent implements OnInit {
   }
 
   getListOfCategoriesDTOs() {
-    this.catService.getCategorieDTOs()
+    this.catService.getAllCategories()
       .subscribe(
       (response: CategoryDto[]) => {
         this.categoriesListDTOs = response;

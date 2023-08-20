@@ -26,6 +26,10 @@ export class SubCategoryService {
     return this.http.get<SubCategoryDto[]>(`${this.apiServerUrl}/subcategories/all`);
   }
 
+  public getAllActivesSubCategories(): Observable<SubCategoryDto[]> {
+    return this.http.get<SubCategoryDto[]>(`${this.apiServerUrl}/subcategories/search-all-active-subcategories`);
+  }
+  
   public getALLSuCategoryDtosOrderByIdDesc(): Observable<SubCategoryDto[]> {
     return this.http.get<SubCategoryDto[]>(`${this.apiServerUrl}/subcategories/searchAllSubCategoriesOrderByIdDesc`);
   }

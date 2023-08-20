@@ -65,7 +65,7 @@ export class CheckoutComponent implements OnInit {
     this.initForm();
     this.cartDetails();
     this.getListCountryDTOs();
-    this.getListStateDTOs();
+  //  this.getListStateDTOs();
     this.checkoutService.getUserId();
 
     this.isLoggedIn = !!this.tokenService.getToken();
@@ -131,7 +131,6 @@ export class CheckoutComponent implements OnInit {
         country: ['', Validators.required],
         zipcode: ['']
       }),
-
       id: this.catalogueService.id
     });
   }
@@ -153,28 +152,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   getListCountryDTOs() {
-    this.countService.getCountryDTOs().subscribe(
+    this.countService.getAllActivesCountries().subscribe(
       (response: CountryDto[]) => {
         this.listCountryDto = response;
-        console.log(this.listCountryDto);
       },
       (error: HttpErrorResponse) => {
         console.log(error);
       }
     );
-  }
-
-  getListStateDTOs() {
-    this.statService.getStateDTOs().subscribe(
-      (response: StateDto[]) => {
-        this.listStateDto = response;
-        console.log(this.listStateDto);
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    );
-
   }
 
   onSubmit() {
@@ -182,19 +167,13 @@ export class CheckoutComponent implements OnInit {
     if (this.checkoutFormGroup.invalid) {
       return;
     }else {
-      console.log(this.checkoutFormGroup.get('customer')!.value);
+   /*    console.log(this.checkoutFormGroup.get('customer')!.value);
       console.log("Emial is", this.checkoutFormGroup.get('customer')!.value.email);
-      console.log("Checkout Value are", this.checkoutFormGroup.value);
+      console.log("Checkout Value are", this.checkoutFormGroup.value); */
 
       let commande = new Commande();
       commande.totalCommande = this.totalPrice;
       commande.totalQuantity = this.totalQuantity;
-
-      console.log("User " + this.catalogueService.id);
-      console.log("Username " + this.catalogueService.username);
-      console.log("Current User " + this.catalogueService.currentUser);
-      console.log(commande.totalCommande);
-      console.log(commande.totalQuantity);
 
       let lcomms: LigneCommande[] = this.cartItems.map(tempCartItem => new LigneCommande(tempCartItem));
 
@@ -207,12 +186,8 @@ export class CheckoutComponent implements OnInit {
       // populate purchase - shippingAddress
       purchase.shippingAddress = this.checkoutFormGroup.get('shippingAddress')!.value;
       const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state));
-      console.log(shippingState);
       //  console.log(purchase.shippingAddress.state.name);
-      console.log(purchase.shippingAddress.state);
       const shippingCountry: Country = JSON.parse(JSON.stringify(purchase.shippingAddress.country));
-      console.log(shippingCountry);
-      console.log(purchase.shippingAddress.country);
       purchase.shippingAddress.state.name = shippingState.name;
       //  purchase.shippingAddress.state.name = shippingState.name;
       purchase.shippingAddress.country = shippingCountry.name;
@@ -230,11 +205,7 @@ export class CheckoutComponent implements OnInit {
       purchase.commande = commande;
       purchase.lcomms = lcomms;
 
-      console.log("Purchase is", purchase);
-
-      // call REST API via checkoutService
-
-      console.log("Conected user is", this.checkoutService.id);
+//      console.log("Conected user is", this.checkoutService.id);
 
       //  this.checkoutService.placeToOrder(purchase).subscribe(
 
@@ -246,7 +217,6 @@ export class CheckoutComponent implements OnInit {
                 positionClass: 'toast-top-right',
               });
               alert(`Votre numero de commande.\n order tracking number: ${data.orderTrackingNumber}`);
-              // reset checkout form
               this.resetCart();
               this.router.navigateByUrl("/shop/success-order");
             },
@@ -266,8 +236,8 @@ export class CheckoutComponent implements OnInit {
       this.checkoutFormGroup.controls['billingAddress'].setValue(this.checkoutFormGroup.controls['shippingAddress'].value)
         this.billingAddressStates = this.shippingAddressStates;
     }else {
-        this.checkoutFormGroup.controls['billingAddress'].reset();
-        this.billingAddressStates = [];
+      this.checkoutFormGroup.controls['billingAddress'].reset();
+      this.billingAddressStates = [];
     }
   }
 
@@ -276,12 +246,8 @@ export class CheckoutComponent implements OnInit {
     const countryCode = formGroup!.value.country.code;
     const countryName = formGroup!.value.country.name;
 
-    console.log(`{formGroupName} country code: ${countryCode}`);
-    console.log(`{formGroupName} country name: ${countryName}`);
-
     this.statService.getStates(countryCode).subscribe(
       data => {
-
         if (formGroupName === 'shippingAddress') {
           this.shippingAddressStates = data;
         }
@@ -296,15 +262,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   resetCart() {
-    // reset cart data
     this.cartService.cartItems = [];
     this.cartService.totalPrice.next(0);
     this.cartService.totalQuantity.next(0);
-
-    // reset the form
     this.checkoutFormGroup.reset();
-
-    // navigate back to the products page
     this.router.navigateByUrl('/products');
   }
 

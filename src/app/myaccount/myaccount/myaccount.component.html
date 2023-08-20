@@ -1,11 +1,6 @@
-<!-- Topbar Start -->
 <div class="container-fluid">
     <app-main-top></app-main-top>
 </div>
-<!-- Topbar End -->
-
-
-<!-- Navbar Start -->
 <div class="container-fluid">
     <div class="row border-top px-xl-5">
         <div class="col-lg-3 d-none d-lg-block"></div>
@@ -14,10 +9,6 @@
         </div>
     </div>
 </div>
-<!-- Navbar End -->
-
-
-<!-- Page Header Start -->
 <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
         <h4 class="font-weight-semi-bold text-uppercase mb-3">Vos commandes</h4>
@@ -28,11 +19,6 @@
         </div>
     </div>
 </div>
-<!-- Page Header End -->
-
-
-<!-- Contact Start -->
-<!-- My Account Start -->
 <div class="my-account">
     <div class="container-fluid">
         <div class="row">
@@ -50,7 +36,7 @@
             <div class="col-md-9">
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
-                        <h4>Dashboard</h4>
+                        <h4>Tableau de bord</h4>
                         <div class="table-responsive">
                             <table class="table table-bordered" aria-label="">
                                 <thead class="thead-dark">
@@ -96,11 +82,9 @@
                                         <th>Total</th>
                                         <th>Status</th>
                                         <th>Date</th>
-                                        <!--  <th>Action</th> -->
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let comDTO of listCommandeDataDTO; let i = index; ">
-                                    <!-- <tr *ngFor="let comDTO of this.lcmdService.listData | paginate: {itemsPerPage: 10, currentPage: p}; let i = index;"> -->
                                     <tr *ngFor="let lcomDTO of comDTO.lcomms | paginate: {itemsPerPage: 10, currentPage: p}; let i = index;">
                                         <td> {{ comDTO.numeroCommande }} </td>
                                         <td> {{ lcomDTO.productName }} </td>
@@ -109,11 +93,7 @@
                                         <td> {{ lcomDTO.price * lcomDTO.quantity }} </td>
                                         <td> {{ comDTO.status }} </td>
                                         <td> {{ comDTO.dateCommande | date:'dd-MM-yyyy' }} </td>
-                                        <!--  <td>
-                                            <a class="btn btn-warning" (click)="viewCommande(comDTO)"> <i class="fa fa-eye"></i> </a>
-                                        </td> -->
                                     </tr>
-
                                 </tbody>
                             </table>
                             <div class="pagination ">
@@ -196,36 +176,21 @@
                             <div class="col-md-6">
                                 <label>Nom&Prénom</label>
                                 <input type="text" class="form-control" [(ngModel)]="listDataProfil.name" name="name" id="name" #name="ngModel" required />
-                                <!--  <input class="form-control" type="text" [value]="listDataProfil.name" placeholder="First Name"> -->
                             </div>
                             <div class="col-md-6">
                                 <label>Nom utilisateur</label>
                                 <input type="text" class="form-control" [(ngModel)]="listDataProfil.username" name="username" id="username" #username="ngModel" required />
-                                <!-- <input class="form-control" type="text" [value]="listDataProfil.username" placeholder="Last Name"> -->
                             </div>
                             <div class="col-md-6">
                                 <label>Mobile</label>
                                 <input type="text" class="form-control" [(ngModel)]="listDataProfil.mobile" name="mobile" id="mobile" #mobile="ngModel" required />
-                                <!-- <input class="form-control" type="text" [value]="listDataProfil.mobile" placeholder="Mobile"> -->
                             </div>
                             <div class="col-md-6">
                                 <div class="group-form">
                                     <label>Email</label>
                                     <input type="text" class="form-control" [(ngModel)]="listDataProfil.email" name="email" id="email" #email="ngModel" required />
                                 </div>
-                                <!-- <input class="form-control" type="text" [value]="listDataProfil.email" placeholder="Email"> -->
-
                             </div>
-                            <!--  <div class="col-md-12">
-                                <input class="form-control" type="text" [value]="listDataProfil.address" placeholder="Address" readonly>
-                            </div> -->
-                            <!--  <div class="col-md-12">
-                                <button class="btn"
-                                  (click)="addEditCustomerUsername(listDataProfil)"
-
-                                  style="cursor: pointer">Modifier Compte</button>
-                                <br><br>
-                            </div> -->
                             &nbsp;
                             <div class="col-md-12">
                                 <button class="btn btn-primary btn-block" (click)="update()" style="cursor: pointer;">Modifier Compte</button>
@@ -234,15 +199,6 @@
                         </div>
                         <h4>Modifier votre mot de passe</h4>
                         <div class="row ">
-                            <!-- <div class="col-md-12 ">
-                                <input class="form-control " type="password " placeholder="Current Password ">
-                            </div>
-                            <div class="col-md-6 ">
-                                <input class="form-control " type="text " placeholder="New Password ">
-                            </div>
-                            <div class="col-md-6 ">
-                                <input class="form-control " type="text " placeholder="Confirm Password ">
-                            </div> -->
                             <div class="col-md-12 ">
                                 <button class="btn btn-primary" (click)="addEditCustomerPassword(listDataProfil)" style="cursor: pointer;">Modifer votre mot de passe</button>
                             </div>
@@ -253,7 +209,6 @@
         </div>
     </div>
 </div>
-<!-- Contact End -->
 
 <ng-template #contentDelete let-modal>
     <div class="modal-header">
@@ -273,9 +228,5 @@
     </div>
   </ng-template>
 
-<!-- Footer Start -->
 <app-footer></app-footer>
-<!-- Footer End -->
-
-<!-- Back to Top -->
 <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

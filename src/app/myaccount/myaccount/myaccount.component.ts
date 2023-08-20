@@ -77,7 +77,6 @@ export class MyaccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.paramId = this.route.snapshot.paramMap.get('id');
-     console.log('Param--', this.paramId);
     if(this.paramId  && this.paramId  > 0){
       this.getCommandeDTOByUserId(this.paramId);
       this.getUtilisateurDTOById(this.paramId);
@@ -119,10 +118,8 @@ export class MyaccountComponent implements OnInit {
 
   getEmploye() {
     const user = this.tokenService.getUser();
-    console.log(user.id);
     this.userService.getUtilisateurDtoById(user.id).subscribe(
       response => {
-        console.log(response);
         this.listDataProfil = response;
         this.customerName = this.listDataProfil.name;
         this.customerUsername = this.listDataProfil.username;
@@ -147,9 +144,7 @@ export class MyaccountComponent implements OnInit {
     this.router.navigate(['/account/my-account/'+this.userId+'/update-password', this.authService.dataForm]);
   }
   
-
   update() {
-    console.log('Data send--', this.listDataProfil);
     this.userService.updateUtilisateurDto(this.listDataProfil.id, this.listDataProfil).subscribe(
       (response: UtilisateurDto) => {
         this.toastr.warning('avec succès','Informations Modifiée', {
@@ -203,7 +198,6 @@ export class MyaccountComponent implements OnInit {
 
   openDelete(targetModal:any, user: UtilisateurDto) {
     const deleteId = user.id;
-    console.log(deleteId);
     this.modalService.open(targetModal, {
       backdrop: 'static',
       size: 'lg'

@@ -4,20 +4,10 @@ import { CommandeDto } from 'src/app/models/commande';
 import { LigneCommandeDto } from 'src/app/models/ligne-commande';
 import { orderservice } from 'src/app/services/commande.service';
 import { orderItemservice } from 'src/app/services/ligne-commande.service';
-
-
-
-/*
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-const pdfMake = window["pdfMake"];
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-*/
-
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import "pdfmake/build/pdfmake"
 const pdfMake = window["pdfMake"];
 pdfMake.vfs = pdfFonts.pdfMake.vfs
-
 import * as moment from 'moment';
 import { CatalogueService } from 'src/app/services/catalogue.service';
 
@@ -36,8 +26,7 @@ export class InvoiceComponent implements OnInit {
   client:any;
   username = '';
 
-  constructor(private crudApi: orderservice,
-              public lcmdService: orderItemservice,
+  constructor(public lcmdService: orderItemservice,
               public catalogueService: CatalogueService,
               private router : Router,
               private route: ActivatedRoute
@@ -55,16 +44,6 @@ export class InvoiceComponent implements OnInit {
     }, err => {
       console.log(err);
     })
-
-  }
-
-  getListCommandeClients() {
-    this.crudApi.getCommandeDtos()
-    .subscribe(
-      response =>{
-        this.listData = response;
-      }
-    );
 
   }
 

@@ -35,24 +35,12 @@ export class UpdatePasswordComponent implements OnInit {
       newPassword: [this.crudApi.dataForm.value.newPassword, [Validators.required]],
     });
   }
-/*
-  infoForm(form?: any) {
-    if(form = null)
-      form.ResetForm();
-    this.formDataProfile = {
-      username: '',
-      oldPassword: '',
-      newPassword: '',
-    };
-  }
-  */
 
   ResetForm() {
     this.crudApi.dataForm.reset();
   }
 
   onSubmit() {
-    console.log(this.formDataProfile);
     this.crudApi.updatePassword(this.formDataProfile).
     subscribe( data => {
       this.toastr.warning('veuillez vous reconnectez','Votre Mot de pqsse a ete modifie avec success', {
@@ -70,6 +58,5 @@ export class UpdatePasswordComponent implements OnInit {
   logout(){
     this.tokenService.signOut();
   }
-
 
 }

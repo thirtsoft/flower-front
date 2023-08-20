@@ -20,7 +20,7 @@ export class SidebarCategoryShopComponent implements OnInit {
   }
 
   getListOfSubCategorieDTOs() {
-    this.subCatService.getAllSubCategoryDtos()
+    this.subCatService.getAllActivesSubCategories()
       .subscribe(
       (response: SubCategoryDto[]) => {
         this.subCategoriesListDTOs = response;
