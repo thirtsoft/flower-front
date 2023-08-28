@@ -8,6 +8,13 @@
             <form action="">
                 <div class="input-group">
                     <input type="text" [(ngModel)]="newsletterDataDTO.customerEmail" name="customerEmail" id="customerEmail" #customerEmail="ngModel" required class="form-control border-white p-4" placeholder="Votre addresse email">
+                    <div *ngIf="customerEmail.invalid && (customerEmail.dirty || customerEmail.touched)"
+                        class="alert">
+
+                    <div *ngIf="customerEmail.errors?.['required']">
+                        votre email est obligatoire.
+                    </div>
+                    </div>
                     <div class="input-group-append">
                         <button (click)="subscribeToNewLetter()" class="btn btn-primary px-4">S'inscrire</button>
                     </div>
