@@ -3,17 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
-import { UpdateUsernameComponent } from './update-username/update-username.component';
 
 const routes: Routes = [
   {
     path: 'my-account/:id',
     component: MyaccountComponent
   },
+  /*
   {
     path: 'my-account/:id',
     component: UpdateUsernameComponent
-  },
+  },*/
   {
     path: 'my-account/:id/update-password',
     component: UpdatePasswordComponent

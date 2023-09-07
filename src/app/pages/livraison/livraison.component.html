@@ -1,110 +1,119 @@
-<!-- Topbar Start -->
 <div class="container-fluid">
-    <app-main-top></app-main-top>
+  <app-main-top></app-main-top>
 </div>
-<!-- Topbar End -->
-
-<!-- Navbar Start -->
 <div class="container-fluid">
-    <div class="row border-top px-xl-5">
-        <div class="col-lg-3 d-none d-lg-block">
-        </div>
-        <div class="col-lg-9">
-            <app-nav-bar></app-nav-bar>
-        </div>
+  <div class="row border-top px-xl-5">
+    <div class="col-lg-3 d-none d-lg-block"></div>
+    <div class="col-lg-9">
+      <app-nav-bar></app-nav-bar>
     </div>
+  </div>
 </div>
-<!-- Navbar End -->
-
-
-<!-- Page Header Start -->
 <div class="container-fluid bg-secondary mb-3">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 150px">
-        <h1 class="font-weight-semi-bold text-uppercase mb-3">Service Livraison</h1>
-        <div class="d-inline-flex">
-            <p class="m-0"><a routerLink="/">Accueil</a></p>
-            <p class="m-0 px-2">-</p>
-            <p class="m-0">Comment se faire livrer ?</p>
-        </div>
+  <div
+    class="d-flex flex-column align-items-center justify-content-center"
+    style="min-height: 150px"
+  >
+    <h1 class="font-weight-semi-bold text-uppercase mb-3">Service Livraison</h1>
+    <div class="d-inline-flex">
+      <p class="m-0"><a routerLink="/">Accueil</a></p>
+      <p class="m-0 px-2">-</p>
+      <p class="m-0">Comment se faire livrer ?</p>
     </div>
+  </div>
 </div>
-<!-- Page Header End -->
-
-
-<!-- Contact Start -->
 <div class="container-fluid pt-4">
-    <div class="row px-xl-5">
-        <div class="col-lg-12 col-sm-12 mb-3 mb-lg-0">
-            <p class="title text-center">Toutes les informations relatives à nos délais de livraison se trouvent sur cette page</p>
+  <div class="row px-xl-5">
+    <div class="col-lg-12 col-sm-12 mb-3 mb-lg-0">
+      <p class="title text-center">
+        Toutes les informations relatives à nos délais de livraison se trouvent
+        sur cette page
+      </p>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <div class="row px-xl-5">
+    <div class="col">
+      <div class="nav nav-tabs justify-content-center border-secondary mb-4">
+        <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1"
+          >Frais de livraison</a
+        >
+        <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2"
+          >Délai de livraison</a
+        >
+        <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3"
+          >Horaire de livraison
+        </a>
+      </div>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="tab-pane-1">
+          <h4 class="mb-3">
+            Les frais de livraisons sont à la charge du client
+          </h4>
+
+          <p>
+            Les frais de livraison sont calculés au passage de la commande en
+            fonction:
+          </p>
+
+          <ul class="text-primary">
+            <li>de la nature de la fleur ou de la déco</li>
+            <li>du mode de livraison</li>
+            <li>de la localité ou quartier</li>
+            <li>de la quantité commandée</li>
+          </ul>
+
+          <p>Par exemple pour se faire livrer :</p>
+          <ul class="text-primary">
+            <li>une fleur de mariage à Dakar = 1500 FCFA</li>
+            <li>une fleur de mariage en Banlieu = 2500 FCFA</li>
+            <li>une fleur de mariage en Région = 7500 FCFA</li>
+          </ul>
         </div>
-        <!-- End .col-lg-6 -->
-    </div>
-    <br /> <br/>
+        <div class="tab-pane fade" id="tab-pane-2">
+          <h4 class="mb-3">Le délai de livraison à connaitre</h4>
 
-    <div class="row px-xl-5">
-        <div class="col">
-            <div class="nav nav-tabs justify-content-center border-secondary mb-4">
-                <a class="nav-item nav-link active" data-toggle="tab" href="#tab-pane-1">Frais de livraison</a>
-                <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-2">Délai de livraison</a>
-                <a class="nav-item nav-link" data-toggle="tab" href="#tab-pane-3">Horaire de livraison </a>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="tab-pane-1">
-                    <h4 class="mb-3">Les frais de livraisons sont à la charge du client</h4>
-
-                    <p>Les frais de livraison sont calculés au passage de la commande en fonction:</p>
-
-                    <ul class="text-primary">
-                        <li>de la nature de la fleur ou de la déco</li>
-                        <li>du mode de livraison</li>
-                        <li>de la localité ou quartier</li>
-                        <li>de la quantité commandée</li>
-                    </ul>
-
-                    <p>Par exemple pour se faire livrer :</p>
-                    <ul class="text-primary">
-                        <li>une fleur de mariage à Dakar = 1500 FCFA</li>
-                        <li>une fleur de mariage en Banlieu = 2500 FCFA</li>
-                        <li>une fleur de mariage en Région = 7500 FCFA</li>
-                    </ul>
-                </div>
-                <div class="tab-pane fade" id="tab-pane-2">
-                    <h4 class="mb-3">Le délai de livraison à connaitre</h4>
-
-                    <p>Le délais de livraison commence à compter du moment où vous payez votre commande, jusqu'au moment où vous recevez votre fleur ou déco.</p>
-                    <br />
-                    <p>Rapide Express est un service mise en oeuvre par Mafleuriste permettant une livraison plus rapide </p>
-                    <br />
-                    <p>Avant d’expédier votre commande, nous devons récupérer le produit chez un de nos fournisseurs. C’est la raison pour laquelle les délais sont plus longs que ceux des commandes «Rapide Express».</p>
-                </div>
-                <div class="tab-pane fade" id="tab-pane-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p>Nos horaires de livraison sont comme suit:</p>
-
-                            <ul class="text-primary">
-                                <li>Du lundi au vendredi nous livrons de 8h à 19h00</li>
-                                <li>samedi et dimance nous livrons de 8h à 22h</li>
-                                <li>les jours fériés et fétes nous livrons de 8h à 23h </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <p>
+            Le délais de livraison commence à compter du moment où vous payez
+            votre commande, jusqu'au moment où vous recevez votre fleur ou déco.
+          </p>
+          <br />
+          <p>
+            Rapide Express est un service mise en oeuvre par Mafleuriste
+            permettant une livraison plus rapide
+          </p>
+          <br />
+          <p>
+            Avant d’expédier votre commande, nous devons récupérer le produit
+            chez un de nos fournisseurs. C’est la raison pour laquelle les
+            délais sont plus longs que ceux des commandes «Rapide Express».
+          </p>
         </div>
-    </div>
+        <div class="tab-pane fade" id="tab-pane-3">
+          <div class="row">
+            <div class="col-md-6">
+              <p>Nos horaires de livraison sont comme suit:</p>
 
-    <div class="text-center">
-        <a class="btn btn-warning" routerLink="/">Acheter maintenant</a>
+              <ul class="text-primary">
+                <li>Du lundi au vendredi nous livrons de 8h à 19h00</li>
+                <li>samedi et dimance nous livrons de 8h à 22h</li>
+                <li>les jours fériés et fétes nous livrons de 8h à 23h</li>
+              </ul>
+            </div>
+            <div class="col-md-6"></div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="text-center">
+    <a class="btn btn-warning" routerLink="/">Acheter maintenant</a>
+  </div>
 </div>
-<!-- Contact End -->
-
-
-<!-- Footer Start -->
 <app-footer></app-footer>
-<!-- Footer End -->
-<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+<a href="#" class="btn btn-primary back-to-top"
+  ><i class="fa fa-angle-double-up"></i
+></a>

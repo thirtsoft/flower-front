@@ -9,10 +9,10 @@ import { CommandeDto } from 'src/app/models/commande';
 import { UtilisateurDto } from 'src/app/models/utilisateur';
 import { orderservice } from 'src/app/services/commande.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
-import { UpdateAccountComponent } from '../update-account/update-account.component';
 import { UpdatePasswordComponent } from '../update-password/update-password.component';
 import { FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UpdateAccountComponent } from '../update-account/update-account.component';
 
 @Component({
   selector: 'app-myaccount',

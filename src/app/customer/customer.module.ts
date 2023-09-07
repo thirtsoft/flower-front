@@ -11,13 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { HomeComponent } from './body/home/home.component';
 import { NewArriveProductComponent } from './body/new-arrive-product/new-arrive-product.component';
-import { FreeShippingComponent } from './body/free-shipping/free-shipping.component';
-import { SelectedProductComponent } from './body/free-shipping/selected-product/selected-product.component';
-import { SubscribleNewletterComponent } from './body/free-shipping/subscrible-newletter/subscrible-newletter.component';
 import { DetailProductComponent } from './body/detail-product/detail-product.component';
-import { CollectionComponent } from './body/collection/collection.component';
-import { CompagnieComponent } from './body/compagnie/compagnie.component';
-import { SameBrandProductComponent } from './body/free-shipping/same-brand-product/same-brand-product.component';
 import { NavbarBodyComponent } from './body/navbar-body/navbar-body.component';
 import { BrandComponent } from './body/brand/brand.component';
 import { FeatureStartComponent } from './body/feature-start/feature-start.component';
@@ -37,24 +31,9 @@ import { Top4ProductListComponent } from './body/top4-product-list/top4-product-
   declarations: [
     HomeComponent,
     NewArriveProductComponent,
-    FreeShippingComponent,
-    SelectedProductComponent,
-  //  CategoryShippingComponent,
     DetailProductComponent,
-    CollectionComponent,
-    CompagnieComponent,
-    SameBrandProductComponent,
     NavbarBodyComponent,
-    SubscribleNewletterComponent,
     MainBodyComponent,
-  //  FooterComponent,
-  //  MainFooterComponent,
-   // BottonBarComponent,
-   // FooterBottomComponent,
-  //  MainTopComponent,
-  //  NavBarComponent,
-  //  TopBarComponent,
-  //  NavComponent,
     BrandComponent,
     FeatureStartComponent,
     CategoryBrandComponent,
@@ -63,35 +42,15 @@ import { Top4ProductListComponent } from './body/top4-product-list/top4-product-
     ProductStartComponent,
     SubscribeNewletterComponent,
     RatingComponent,
- //   SearchComponent,
     ListRatingComponent,
- Top4ProductListComponent
+    Top4ProductListComponent
   ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    /*
-    FormsModule,
-    ReactiveFormsModule,
-    Ng2SearchPipeModule,
-    NgxPaginationModule,
-    NgbModule,
-    */
     SharedModule
   ],
-  exports: [
-    /*
-    SearchComponent,
-    FooterComponent,
-    BottonBarComponent,
-    MainTopComponent,
-    NavBarComponent,
-    TopBarComponent,
-    CategoryBrandComponent,
-    TopBarComponent,
-    BottonBarComponent,
-    */
-  ],
+  exports: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CustomerModule { }

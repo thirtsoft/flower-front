@@ -7,7 +7,6 @@ import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error/error.component';
 import { FaqComponent } from './faq/faq.component';
 import { LivraisonComponent } from './livraison/livraison.component';
-import { PagesComponent } from './pages/pages.component';
 import { PayementComponent } from './payement/payement.component';
 import { SuccessEmailComponent } from './success-email/success-email.component';
 import { TermesComponent } from './termes/termes.component';

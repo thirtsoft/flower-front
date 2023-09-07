@@ -28,11 +28,12 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     data: { preload: true }
   },
+  /*
   { 
     path: 'elements', 
     loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule),
     data: { preload: true }
-   },
+   },*/
   {
     path: '**', // Navigate to Home Page if not found any page
     redirectTo: 'home/fashion',

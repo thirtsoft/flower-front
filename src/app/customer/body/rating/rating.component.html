@@ -1,50 +1,63 @@
 <div *ngIf="this.isLoggedIn" class="col-sm-6 col-md-6">
-    <h4 class="mb-4">
-        Donnez votre avis</h4>
-    <!--  <small>Tous les champs * sont obligatoire</small> -->
-    <div class="d-flex my-3">
-        <form [formGroup]="this.formData" (ngSubmit)="onSubmit()">
-            <p class="mb-0 mr-2">Nombre étoile * :</p>
-            <div class="text-primary">
-                <ngb-rating formControlName="nbreEtoile" [(rate)]="currentRating" [max]="maxRatingValue" [id]="'rating3'" [readonly]="false" (rateChange)="onRateChange($event)">
-                </ngb-rating>
-                <div *ngIf="
+  <h4 class="mb-4">Donnez votre avis</h4>
+  <div class="d-flex my-3">
+    <form [formGroup]="this.formData" (ngSubmit)="onSubmit()">
+      <p class="mb-0 mr-2">Nombre étoile * :</p>
+      <div class="text-primary">
+        <ngb-rating
+          formControlName="nbreEtoile"
+          [(rate)]="currentRating"
+          [max]="maxRatingValue"
+          [id]="'rating3'"
+          [readonly]="false"
+          (rateChange)="onRateChange($event)"
+        >
+        </ngb-rating>
+        <div
+          *ngIf="
             f['nbreEtoile'].invalid &&
             (f['nbreEtoile'].dirty || f['nbreEtoile'].touched)
-          " class="alert alert-danger">
-                    <span *ngIf="f['nbreEtoile'].errors!['required']">Le choix du nombre d'étoiles est obligatoire.</span
+          "
+          class="alert alert-danger"
+        >
+          <span *ngIf="f['nbreEtoile'].errors!['required']"
+            >Le choix du nombre d'étoiles est obligatoire.</span
           >
-
         </div>
       </div>
- 
-  <form> 
-      <div class="form-group">
-          <!-- <label for="message">Commentaire *</label> -->
+      <form>
+        <div class="form-group">
           <textarea
-                formControlName="observation"
-                cols="30" rows="5" class="form-control"
-                  id="observation" required placeholder="Votre commentaire"></textarea>
-              <div
-                *ngIf="
-                  f['observation'].invalid &&
-                  (f['observation'].dirty || f['observation'].touched)
-                "
-                class="alert alert-danger"
-              >
-                <span *ngIf="f['observation'].errors!['required']"
-                  >votre commentaire est obligatoire.</span
-                >
-              </div>
-      </div>
+            formControlName="observation"
+            cols="30"
+            rows="5"
+            class="form-control"
+            id="observation"
+            required
+            placeholder="Votre commentaire"
+          ></textarea>
+          <div
+            *ngIf="
+              f['observation'].invalid &&
+              (f['observation'].dirty || f['observation'].touched)
+            "
+            class="alert alert-danger"
+          >
+            <span *ngIf="f['observation'].errors!['required']"
+              >votre commentaire est obligatoire.</span
+            >
+          </div>
+        </div>
 
-      <div class="form-group mb-0">
-          <input 
-          type="submit" [disabled]="!this.formData.valid"
-          value="Envoyer votre commentaire" class="btn btn-primary px-3">
-      </div>
- </form> 
-
-</form>
-</div>
+        <div class="form-group mb-0">
+          <input
+            type="submit"
+            [disabled]="!this.formData.valid"
+            value="Envoyer votre commentaire"
+            class="btn btn-primary px-3"
+          />
+        </div>
+      </form>
+    </form>
+  </div>
 </div>

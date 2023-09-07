@@ -79,7 +79,7 @@
                             <input class="form-control" type="text" formControlName="rue" placeholder="Rue">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Quartier</label>
+                            <label>Quartier *</label>
                             <input type="text" formControlName="city" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.get('shippingAddress')?.get('city')?.errors}" class="form-control" placeholder="Quartier">
                             <p class="alert alert-danger" *ngIf="checkoutFormGroup.get('shippingAddress')?.get('city')?.hasError('required') &&
                                 (checkoutFormGroup.get('shippingAddress')?.get('city')?.dirty || submitted)">
@@ -87,7 +87,7 @@
                             </p>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Région</label>
+                            <label>Région *</label>
                             <select formControlName="country" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.get('shippingAddress')?.get('country')?.errors}" class="custom-select" (change)="getStates('shippingAddress')">
                                 <option selected>Choisir Région</option>
                                 <option 
@@ -100,7 +100,7 @@
                             </p>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Département</label>
+                            <label>Département *</label>
                             <select class="custom-select" formControlName="state" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.get('shippingAddress')?.get('state')!.errors}">
                                 <option selected>Choisir Département</option>
                                 <option 
@@ -133,7 +133,7 @@
                             <input class="form-control" type="text" formControlName="rue" placeholder="Rue">
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Quartier</label>
+                            <label>Quartier *</label>
                             <input type="text" formControlName="city" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.get('billingAddress')?.get('city')?.errors}" class="form-control" placeholder="Quartier">
                             <p class="alert alert-danger" *ngIf="checkoutFormGroup.get('billingAddress')?.get('city')?.hasError('required') &&
                                 (checkoutFormGroup.get('billingAddress')?.get('city')?.dirty || submitted)">
@@ -141,7 +141,7 @@
                             </p>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Région</label>
+                            <label>Région *</label>
                             <select formControlName="country" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.get('billingAddress')?.get('country')?.errors}" class="custom-select" (change)="getStates('billingAddress')">
                                 <option selected>Choisir région</option>
                                 <option *ngFor="let country of listCountryDto"
@@ -153,7 +153,7 @@
                             </p>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Département</label>
+                            <label>Département *</label>
                             <select class="custom-select" formControlName="state" [ngClass]="{'is-invalid': submitted && checkoutFormGroup.get('billingAddress')?.get('state')?.errors}">
                                 <option selected>Choisir départment</option>
                                 <option *ngFor="let tempState of billingAddressStates"
