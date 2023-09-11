@@ -66,7 +66,7 @@ export class InvoiceComponent implements OnInit {
     return {
       content: [
         {
-          text: 'FLEUR POUR TOUS SERVICE',
+          text: 'FLEUR POUR TOUS',
           fontSize: 15,
           alignment: 'center',
           color: '#0000ff',
@@ -88,7 +88,7 @@ export class InvoiceComponent implements OnInit {
           alignment: 'center',
         },
         {
-          text: 'Tél: +221 77 944 03 10 / Email: support@fleurpourtous.com',
+          text: 'Tél: +221 78 296 68 68 / Email: support@fleurpourtous.com',
           fontSize: 11,
           bold: true,
           alignment: 'center',
