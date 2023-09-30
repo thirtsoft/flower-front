@@ -19,26 +19,20 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  /************   ProductDto  ***************/
-
-  public getALLProductDTOs(): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/all`);
-  }
-
-  public getProductDtosOrderByIdDesc(): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchAllProductOrderByIdDesc`);
+  public getAllActivesProductDtos(): Observable<ProductDto[]> {
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-all-active-products`);
   }
 
   public getTop3ProductDTOsByIdDesc():  Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchTop3ProductByOrderIdDesc`);
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-top3-product-by-orderIdDesc`);
   }
 
   public getTop4ProductDTOsByIdDesc():  Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchTop4ProductByOrderIdDesc`);
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-top4-product-by-orderIdDesc`);
   }
 
   public getTop8ProductDTOsByIdDesc():  Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchTop8ProductByOrderIdDesc`);
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-top8-product-by-orderIdDesc`);
   }
 
   public getProductDtoById(prodId: number): Observable<ProductDto> {
@@ -46,62 +40,11 @@ export class ProductService {
   }
 
   public getProductDtoByReference(reference: string): Observable<ProductDto> {
-    return this.http.get<ProductDto>(`${this.apiServerUrl}/products/searchProductbyReference/${reference}`);
-  }
-
-  public addProductDto(prodDto: ProductDto): Observable<ProductDto> {
-    return this.http.post<ProductDto>(`${this.apiServerUrl}/products/create`, prodDto);
-  }
-
-  public addProductDtoWithPhoto(formData: FormData): Observable<any> {
-    const req = new HttpRequest('POST', `${this.apiServerUrl}/products/createWithFile`, formData, {
-      reportProgress: true,
-      responseType: 'text'
-    });
-    return this.http.request(req);
-  }
-
-  public addProductDtoWithPhotoInFolder(formData: FormData): Observable<any> {
-    const req = new HttpRequest('POST', `${this.apiServerUrl}/products/createWithFileInFolder`, formData, {
-      reportProgress: true,
-      responseType: 'text'
-    });
-    return this.http.request(req);
-  }
-
-
-  public updateProductDto(prodId: number, prodDto: ProductDto): Observable<ProductDto> {
-    return this.http.put<ProductDto>(`${this.apiServerUrl}/products/update/${prodId}`, prodDto);
-  }
-
-  uploadPhotoProductDto(file: File, id: number): Observable<HttpEvent<{}>> {
-    let formdata: FormData = new FormData();
-    formdata.append('file', file);
-    const req = new HttpRequest('POST', this.apiServerUrl+'/products/uploadProductPhoto/' + id, formdata, {
-      reportProgress: true,
-      responseType: 'text'
-    });
-
-    return this.http.request(req);
-  }
-
-  uploadPhotoProductDtoInFolder(file: File, id: number): Observable<HttpEvent<{}>> {
-    let formdata: FormData = new FormData();
-    formdata.append('file', file);
-    const req = new HttpRequest('POST', this.apiServerUrl+'/products/uploadProductPhoto/' + id, formdata, {
-      reportProgress: true,
-      responseType: 'text'
-    });
-
-    return this.http.request(req);
+    return this.http.get<ProductDto>(`${this.apiServerUrl}/products/search-product-by-reference/${reference}`);
   }
 
   public getPhotoArticle() {
     return this.http.get(`${this.apiServerUrl}/products/photoProduct`);
-  }
-
-  public deleteProductDto(prodId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/products/delete/${prodId}`);
   }
 
   incrementQuantityProductDto(prodDto: ProductDto) {

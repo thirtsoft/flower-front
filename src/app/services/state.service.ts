@@ -14,18 +14,8 @@ export class StateService {
   constructor(private http: HttpClient) {
   }
 
-  /***************************** StateDTO    *************/
-
-  public getStateDTOs(): Observable<StateDto[]> {
-    return this.http.get<StateDto[]>(`${this.apiServerUrl}/states/all`);
-  }
-
   public getAllActivesStates(): Observable<StateDto[]> {
     return this.http.get<StateDto[]>(`${this.apiServerUrl}/states/search-all-active-states`);
-  }
-
-  public getAllStateDTOsOrderByIdDesc(): Observable<StateDto[]> {
-    return this.http.get<StateDto[]>(`${this.apiServerUrl}/states/searchAllStatesOrderByIdDesc`);
   }
 
   public getStateDtoById(statId: number): Observable<StateDto> {
@@ -36,25 +26,13 @@ export class StateService {
     return this.http.get<StateDto>(`${this.apiServerUrl}/states/${designation}`);
   }
 
-  public addStateDto(stateDto: StateDto): Observable<StateDto> {
-    return this.http.post<StateDto>(`${this.apiServerUrl}/states/create`, stateDto);
-  }
-
-  public updateStateDto(statId: number, stateDto: StateDto): Observable<StateDto> {
-    return this.http.put<StateDto>(`${this.apiServerUrl}/states/update/${statId}`, stateDto);
-  }
-
   public getListStateByCountryCode(code: string): Observable<StateDto[]> {
-    return this.http.get<StateDto[]>(`${this.apiServerUrl}/states/searchStateByCountryCode?code=`+code);
+    return this.http.get<StateDto[]>(`${this.apiServerUrl}/states/search-state-by-country-code?code=`+code);
   }
 
   getStates(theCountryCode: string): Observable<any> {
-    const searchStateUrl = `${this.apiServerUrl}/states/searchStateByCountryCode?code=${theCountryCode}`;
+    const searchStateUrl = `${this.apiServerUrl}/states/search-state-by-country-code?code=${theCountryCode}`;
     return this.http.get(searchStateUrl);
-  }
-
-  public deleteStateDto(statId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/states/delete/${statId}`);
   }
 
 }

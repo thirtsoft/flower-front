@@ -14,30 +14,12 @@ export class AddressService {
   constructor(private http: HttpClient) {
   }
 
-  /****************************** AddressDto ******************/
-
-  public getAddressDtos(): Observable<AddressDto[]> {
-    return this.http.get<AddressDto[]>(`${this.apiServerUrl}/addresses/all`);
-  }
 
   public getAddressDtosOrderByIdDesc(): Observable<AddressDto[]> {
-    return this.http.get<AddressDto[]>(`${this.apiServerUrl}/addresses/searchAllAddressOrderByIdDesc`);
+    return this.http.get<AddressDto[]>(`${this.apiServerUrl}/addresses/search-all-active-addresses`);
   }
 
   public getAddressDtoById(addId: number): Observable<AddressDto> {
     return this.http.get<AddressDto>(`${this.apiServerUrl}/addresses/findById/${addId}`);
   }
-
-  public addAddressDto(addressDto: AddressDto): Observable<AddressDto> {
-    return this.http.post<AddressDto>(`${this.apiServerUrl}/addresses/create`, addressDto);
-  }
-
-  public updateAddressDto(addId: number, addressDto: AddressDto): Observable<AddressDto> {
-    return this.http.put<AddressDto>(`${this.apiServerUrl}/addresses/update/${addId}`, addressDto);
-  }
-
-  public deleteAddressDto(addId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/addresses/delete/${addId}`);
-  }
-
 }

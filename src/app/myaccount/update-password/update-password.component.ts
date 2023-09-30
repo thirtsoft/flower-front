@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { UpdatePasswordInfo } from 'src/app/auth/services/profile-info';
 import { TokenStorageService } from 'src/app/auth/services/token-storage.service';
+import { UtilisateurService } from 'src/app/services/utilisateur.service';
 
 @Component({
   selector: 'app-update-password',
@@ -18,6 +19,7 @@ export class UpdatePasswordComponent implements OnInit {
 
   constructor(public crudApi: AuthService,
               private tokenService: TokenStorageService,
+              private userService: UtilisateurService,
               public toastr: ToastrService,
               public fb: FormBuilder,
               private router : Router,
@@ -41,7 +43,7 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    this.crudApi.updatePassword(this.formDataProfile).
+    this.userService.updatePassword(this.formDataProfile).
     subscribe( data => {
       this.toastr.warning('veuillez vous reconnectez','Votre Mot de pqsse a ete modifie avec success', {
         timeOut: 1500,

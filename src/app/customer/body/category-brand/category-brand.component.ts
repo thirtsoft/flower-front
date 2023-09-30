@@ -12,7 +12,7 @@ export class CategoryBrandComponent implements OnInit {
 
   subCategoriesListDTOs!: SubCategoryDto[];
 
-  constructor(public subCatService: SubCategoryService
+  constructor(public subcatService: SubCategoryService
   ){}
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class CategoryBrandComponent implements OnInit {
   }
 
   getListOfSubCategorieDTOs() {
-    this.subCatService.getAllSubCategoryDtos()
+    this.subcatService.getAllSubCategories()
       .subscribe(
       (response: SubCategoryDto[]) => {
         this.subCategoriesListDTOs = response;

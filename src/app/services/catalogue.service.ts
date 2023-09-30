@@ -24,7 +24,7 @@ export class CatalogueService {
   }
 
   public getListProductBySelectedIsTrue(): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchProductBySelectedIsTrue`);
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-product-by-selected-is-true`);
   }
 
   public getTop6ProductOrderByIdDesc(): Observable<ProductDto[]> {
@@ -32,15 +32,15 @@ export class CatalogueService {
   }
 
   public getTop5OrderItemsOrderByIdDesc(): Observable<LigneCommandeDto[]> {
-    return this.http.get<LigneCommandeDto[]>(`${this.apiServerUrl}/orderItems/searchTop5OrderItemsOrderByIdDesc`);
+    return this.http.get<LigneCommandeDto[]>(`${this.apiServerUrl}/orderItems/search-top8-orderItems-order-by-IdDesc`);
   }
 
   public getTop12ProductOrderByCreatedDateDesc(): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchTop24ProductByOrder`);
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-top24-product-by-order`);
   }
 
   public getListProductBySubCategoryId(scatId: number): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/productsByScategories/${scatId}`);
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/products-by-subcategories/${scatId}`);
   }
 
   public getListProductBySubCategoryName(scatName: string): Observable<ProductDto[]> {
@@ -48,11 +48,11 @@ export class CatalogueService {
   }
 
   public getListProductDTOByPageable(page: number, size: number): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchProductByPageables?page=`+page+"&size="+size);
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-product-by-pageable?page=`+page+"&size="+size);
   }
 
   public getListProductByKeyword(keyword: string): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchProductByKeyword?keyword=`+keyword);
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-product-by-keyword?keyword=`+keyword);
   }
 
   public getListProductBySamePrice(price: number): Observable<ProductDto[]> {
@@ -60,14 +60,13 @@ export class CatalogueService {
   }
 
   public getListProductDTOBySubCategoryByPageable(scatId: number, page: number, size: number): Observable<ProductDto[]> {
-    const searchUrl = (this.apiServerUrl+"/products/searchProductBySubcategoryByPageables?id="+scatId+"&page="+page+"&size="+size);
+    const searchUrl = (this.apiServerUrl+"/products/search-all-products-by-subcategory-by-pageable?id="+scatId+"&page="+page+"&size="+size);
     console.log("Search Url---", searchUrl);
     return this.http.get<ProductDto[]>(searchUrl);
   }
 
   public getListProductBySamePriceByPageable(price: number, page: number, size: number): Observable<ProductDto[]> {
     const searchbyPriceUrl = (this.apiServerUrl+"/products/searchProductBySamePriceByPageables?price="+price+"&page="+page+"&size="+size);
-    console.log("Search Price Url---", searchbyPriceUrl);
     return this.http.get<ProductDto[]>(searchbyPriceUrl);
   }
 
@@ -76,7 +75,7 @@ export class CatalogueService {
   }
 
   public getPhotoProductInContext() {
-    return this.http.get(`${this.apiServerUrl}/products/photoProductInContext`);
+    return this.http.get(`${this.apiServerUrl}/products/photoProductInFolder`);
   }
 
   public getCurrentUser(): Observable<any> {
@@ -99,11 +98,11 @@ export class CatalogueService {
   }
 
   public getNumberTotalOfProduct(): Observable<any> {
-    return this.http.get(`${this.apiServerUrl}/products/countNumberTotalOfProducts`);
+    return this.http.get(`${this.apiServerUrl}/products/count-number-total-of-products`);
   }
 
   public getAllProductsByPageable(page: any,size: any): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchAllProductsByPageable?page=${page}&size=${size}`).pipe(
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-all-products-by-pageable?page=${page}&size=${size}`).pipe(
       map(
         response => response
       )
@@ -111,7 +110,7 @@ export class CatalogueService {
   }
 
   public getAllProductsByCategoryId(id: any,page: any,size: any): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchAllProductsBySubCategoryByPageable?id=${id}&page=${page}&size=${size}`).pipe(
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-product-by-subcategory-by-pageable?id=${id}&page=${page}&size=${size}`).pipe(
       map(
         response => response
       )
@@ -127,7 +126,7 @@ export class CatalogueService {
   }
 
   public getAllProductsByKeyword(keyword: any,page: any,size: any): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/searchAllProductsByKeywordByPageable?keyword=${keyword}&page=${page}&size=${size}`).pipe(
+    return this.http.get<ProductDto[]>(`${this.apiServerUrl}/products/search-all-products-by-keyword-by-pageable?keyword=${keyword}&page=${page}&size=${size}`).pipe(
       map(
         response => response
       )
@@ -143,7 +142,7 @@ export class CatalogueService {
   }
 
   public getProductsLengthByCategoryId(id: any): Observable<number> {
-    return this.http.get<number>(`${this.apiServerUrl}/products/productSizeBySubCategoryId?id=${id}`).pipe(
+    return this.http.get<number>(`${this.apiServerUrl}/products/productSize-by-subcategoryId?id=${id}`).pipe(
       map(
         response => response
       )
@@ -159,10 +158,12 @@ export class CatalogueService {
   }
 
   public getProductsLengthByKeyword(keyword: any): Observable<number> {
-    return this.http.get<number>(`${this.apiServerUrl}/products/productSizeByKeyword?keyword=${keyword}`).pipe(
+    return this.http.get<number>(`${this.apiServerUrl}/products/productSize-by-keyword?keyword=${keyword}`).pipe(
       map(
         response => response
       )
     )
   }
 }
+
+

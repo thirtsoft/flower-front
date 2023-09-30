@@ -22,7 +22,7 @@ export class CategoryShippingComponent implements OnInit {
   }
 
   getCategoriesListDTOs() {
-    this.cat.getCategorieDTOs().subscribe(
+    this.cat.getAllCategories().subscribe(
       (response: CategoryDto[]) => {
         this.categoryListDTOs = response;
       },
@@ -31,7 +31,4 @@ export class CategoryShippingComponent implements OnInit {
       }
     );
   }
-
-
-
 }

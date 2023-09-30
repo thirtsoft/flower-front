@@ -51,7 +51,7 @@ export class ShopComponent implements OnInit {
   constructor(public catalService: CatalogueService,
               private prodService: ProductService,
               private cartService: CartService,
-              private subCat: SubCategoryService,
+              private subcatService: SubCategoryService,
               private toastr: ToastrService,
               private route: ActivatedRoute,
               private router: Router,
@@ -68,7 +68,7 @@ export class ShopComponent implements OnInit {
 
   
   getScategoryListDTOs() {
-    this.subCat.getAllSubCategoryDtos().subscribe(
+    this.subcatService.getAllSubCategories().subscribe(
       (response: SubCategoryDto[]) => {
         this.subCategoryListDTOs = response;
       },
@@ -170,7 +170,7 @@ export class ShopComponent implements OnInit {
   }
 
   getProductListDTOs() {
-    this.prodService.getALLProductDTOs().subscribe(
+    this.prodService.getAllActivesProductDtos().subscribe(
       (response: ProductDto[]) => {
         this.productListDTOs = response;
         console.log(this.productListDTOs);
@@ -191,49 +191,6 @@ export class ShopComponent implements OnInit {
       this.filterKey= '';
     }
   }
-
-  /*
-  getListProductDTOs() {
-    this.searchMode = this.route.snapshot.paramMap.has('keyword');
-    this.priceSearch = +this.route.snapshot.paramMap.get('price')!;
-    if (this.searchMode) {
-      this.getProductListDTOsBySearchKeyword();
-    }
-     else  {
-      this.handlerListProductDTOs();
-      console.log( this.handlerListProductDTOs());
-    }
-  }
-
- 
-  handlerListProductDTOs() {
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
-    if (hasCategoryId) {
-      this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
-    }else {
-      this.currentCategoryId = 1;
-    }
-
-    if(this.previousCategoryId != this.currentCategoryId) {
-      this.currentPage = 1;
-    }
-    this.previousCategoryId = this.currentCategoryId;
-
-    this.catalService.getListProductDTOBySubCategoryByPageable(
-          this.currentCategoryId,
-          this.currentPage - 1,
-          this.size).subscribe(this.processResult());
-  }
-  
-
-  processResult() {
-    return (data:any) => {
-      this.totalPages = data['totalPages'];
-      this.pages = new Array(data['totalPages']);
-      this.productListDTOs = data['content'];
-    }
-  }
-  */
 
   getProductDTOByPageable() {
     this.catalService.getListProductDTOByPageable(this.currentPage, this.size)
