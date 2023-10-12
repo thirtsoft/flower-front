@@ -47,7 +47,7 @@
                 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate="novalidate">
                     <div class="control-group">
                        <!--  <label>Nom&Prénom</label> -->
-                        <input type="text" class="form-control" formControlName="name" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['name']!.errors}" placeholder="Entrez votre Nom complet" />
+                        <input type="text" class="form-control" formControlName="name" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['name']!.errors}" placeholder="Entrez votre nom complet" />
                         <p class="help-block text-danger"></p>
                         <div *ngIf="submitted && registrationForm.controls!['name'].errors" class="alert alert-danger">
                             <div *ngIf="submitted && registrationForm.controls!['name'].errors!['required']">
@@ -58,7 +58,7 @@
 
                     <div class="control-group">
                        <!--  <label>Nom utilisateur *</label> -->
-                        <input type="text" formControlName="username" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['username']!.errors}" class="form-control" placeholder="Entrez votre Nom utilisateur" />
+                        <input type="text" formControlName="username" [ngClass]="{'is-invalid': submitted && registrationForm.controls!['username']!.errors}" class="form-control" placeholder="Entrez votre nom utilisateur" />
                         <p class="help-block text-danger"></p>
                         <div *ngIf="submitted && registrationForm.controls!['username'].errors" class="alert alert-danger">
                             <div *ngIf="submitted && registrationForm.controls!['username'].errors!['required']">
