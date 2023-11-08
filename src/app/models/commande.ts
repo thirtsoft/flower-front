@@ -13,6 +13,7 @@ export class Commande {
     dateCommande!: Date;
     status!: string;
     sessionId!: string;
+    shippingPrice?: number;
   
     client!: Client;
     utilisateur!: Utilisateur;

@@ -35,4 +35,9 @@ export class StateService {
     return this.http.get(searchStateUrl);
   }
 
+  getPrixLivraisonByStateId(idState: number): Observable<any> {
+    const searchStateUrl = `${this.apiServerUrl}/states/shipping-price/${idState}`;
+    return this.http.get(searchStateUrl);
+  }
+
 }

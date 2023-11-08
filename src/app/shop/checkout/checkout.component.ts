@@ -47,6 +47,7 @@ export class CheckoutComponent implements OnInit {
   isLoggedIn = false;
   username: any;
   userId: any;
+  prix_livraison: number = 0;
 
   constructor(public catalogueService: CatalogueService,
               private cartService: CartService,
@@ -131,7 +132,8 @@ export class CheckoutComponent implements OnInit {
         country: ['', Validators.required],
         zipcode: ['']
       }),
-      id: this.catalogueService.id
+      id: this.catalogueService.id,
+      shippingPrice: this.prix_livraison,
     });
   }
 
@@ -162,6 +164,18 @@ export class CheckoutComponent implements OnInit {
     );
   }
 
+  getShippingPriceByStateId(id: number) {
+    this.statService.getPrixLivraisonByStateId(id).subscribe(
+      (response) => {
+        this.prix_livraison = response;
+        console.log("Shipping price",  this.prix_livraison);
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
+  }
+
   onSubmit() {
     this.submitted = true;
     if (this.checkoutFormGroup.invalid) {
@@ -174,6 +188,7 @@ export class CheckoutComponent implements OnInit {
       let commande = new Commande();
       commande.totalCommande = this.totalPrice;
       commande.totalQuantity = this.totalQuantity;
+      commande.shippingPrice = this.prix_livraison;
 
       let lcomms: LigneCommande[] = this.cartItems.map(tempCartItem => new LigneCommande(tempCartItem));
 
@@ -250,9 +265,11 @@ export class CheckoutComponent implements OnInit {
       data => {
         if (formGroupName === 'shippingAddress') {
           this.shippingAddressStates = data;
+            this.getShippingPriceByStateId(this.shippingAddressStates[0].id);
         }
         else {
           this.billingAddressStates = data;
+            this.getShippingPriceByStateId(this.billingAddressStates[0].id);
         }
         // select first item by default
         formGroup!.get('state')!.setValue(data[0]);
